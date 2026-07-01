@@ -1,0 +1,126 @@
+/* Theme tokens ported from the original design. data-theme lives on <html>. */
+:root,
+[data-theme="dark"] {
+  --bg: #0a0a0b;
+  --dot: rgba(255, 255, 255, 0.045);
+  --fade-a: rgba(10, 10, 11, 0.35);
+  --fade-b: rgba(10, 10, 11, 0.82);
+  --glow1: rgba(217, 119, 87, 0.13);
+  --glow2: rgba(255, 255, 255, 0.05);
+  --nav-bg: rgba(10, 10, 11, 0.7);
+  --text1: #ededed;
+  --text-e4: #e4e4e4;
+  --text-d4: #d4d4d4;
+  --text-c8: #c8c8c8;
+  --text-9: #9e9e9e;
+  --muted: #6a6a6a;
+  --muted2: #7a7a7a;
+  --faint: #3e3e42;
+  --border-14: rgba(255, 255, 255, 0.14);
+  --border-12: rgba(255, 255, 255, 0.12);
+  --border-10: rgba(255, 255, 255, 0.1);
+  --border-08: rgba(255, 255, 255, 0.08);
+  --border-07: rgba(255, 255, 255, 0.07);
+  --card: rgba(255, 255, 255, 0.05);
+  --accent: #d97757;
+  --btn-fg: #0a0a0b;
+  --node-bg: #141417;
+}
+
+[data-theme="light"] {
+  --bg: #fafaf7;
+  --dot: rgba(0, 0, 0, 0.05);
+  --fade-a: rgba(250, 250, 247, 0.3);
+  --fade-b: rgba(250, 250, 247, 0.78);
+  --glow1: rgba(217, 119, 87, 0.12);
+  --glow2: rgba(0, 0, 0, 0.035);
+  --nav-bg: rgba(250, 250, 247, 0.78);
+  --text1: #1a1a1a;
+  --text-e4: #262626;
+  --text-d4: #383838;
+  --text-c8: #404040;
+  --text-9: #5c5c5c;
+  --muted: #8a8a8a;
+  --muted2: #787878;
+  --faint: #c4c4bc;
+  --border-14: rgba(0, 0, 0, 0.16);
+  --border-12: rgba(0, 0, 0, 0.14);
+  --border-10: rgba(0, 0, 0, 0.11);
+  --border-08: rgba(0, 0, 0, 0.09);
+  --border-07: rgba(0, 0, 0, 0.07);
+  --card: rgba(0, 0, 0, 0.03);
+  --accent: #c25b38;
+  --btn-fg: #fafaf7;
+  --node-bg: #ecece6;
+}
+
+@keyframes glowA {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(50px, 36px) scale(1.16);
+  }
+}
+@keyframes glowB {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-44px, -26px) scale(1.1);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+p,
+blockquote,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+  font-family: "Geist", sans-serif;
+  background: var(--bg);
+}
+a {
+  text-decoration: none;
+}
+img {
+  display: block;
+}
+li {
+  list-style: none;
+}
+button {
+  font-family: "Geist", sans-serif;
+}
+
+/* small shared helpers used inside data-driven HTML */
+.muted {
+  color: var(--muted);
+}
+strong {
+  color: var(--text-e4);
+  font-weight: 600;
+}
+
+/* hover affordances (the original used a custom style-hover attr) */
+.icon-link:hover {
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+.nav-link:hover {
+  color: var(--text1);
+}

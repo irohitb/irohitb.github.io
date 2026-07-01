@@ -1,0 +1,18 @@
+# YouTube Music — hand-edited for now (no official YT Music API). To automate
+# later: scrobble to Last.fm and generate this file like github.yml/health.yml.
+nowPlaying:
+  track: "Midnight City"
+  artist: "M83"
+topTracks:
+  - track: "Midnight City"
+    artist: "M83"
+    plays: 47
+  - track: "Instant Crush"
+    artist: "Daft Punk"
+    plays: 39
+  - track: "Weightless"
+    artist: "Marconi Union"
+    plays: 31
+  - track: "Time"
+    artist: "Hans Zimmer"
+    plays: 28

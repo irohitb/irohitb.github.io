@@ -1,0 +1,8 @@
+# Life facts. Hand-edited. `dateOfBirth` drives the age + birthday countdown
+# (computed at build time in life.ts); lifeStatic are the plain text tiles.
+dateOfBirth: "1997-12-30"
+lifeStatic:
+  location: "San Francisco"
+  locationSub: "Currently based · PST"
+  focus: "Year of Agents"
+  focusSub: "2026 focus"

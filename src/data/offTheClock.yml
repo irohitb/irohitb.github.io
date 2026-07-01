@@ -1,0 +1,23 @@
+# Curated lists — hand-edited. Movies could later be enriched via TMDB.
+blogs:
+  - title: "Building effective agents"
+    source: "anthropic.com/research"
+    href: "#"
+  - title: "The Bitter Lesson"
+    source: "incompleteideas.net"
+    href: "#"
+  - title: "Situational Awareness"
+    source: "situational-awareness.ai"
+    href: "#"
+  - title: "Latency Numbers Every Programmer Should Know"
+    source: "gist.github.com/jboner"
+    href: "#"
+movies:
+  - title: "Oppenheimer"
+    meta: "Christopher Nolan · 2023"
+  - title: "Blade Runner 2049"
+    meta: "Denis Villeneuve · 2017"
+  - title: "The Social Network"
+    meta: "David Fincher · 2010"
+  - title: "Whiplash"
+    meta: "Damien Chazelle · 2014"

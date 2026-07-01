@@ -1,0 +1,51 @@
+---
+import ThemeToggle from "./ThemeToggle.tsx";
+import { profile } from "../data/profile";
+---
+
+<div
+  style="position:sticky; top:0; z-index:50; background:var(--nav-bg); border-bottom:1px solid var(--border-07); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);"
+>
+  <div
+    style="max-width:1260px; margin:0 auto; padding:0 40px; display:flex; align-items:center; justify-content:space-between; height:56px;"
+  >
+    <span
+      style="font-family:'Geist',sans-serif; font-size:15px; font-weight:700; color:var(--text1); letter-spacing:-0.01em;"
+      >{profile.name}</span
+    >
+    <div style="display:flex; align-items:center; gap:18px;">
+      <a class="nav-link" href="#now" style="font-size:13px; color:var(--text-9);">Now</a>
+      <a class="nav-link" href="#work" style="font-size:13px; color:var(--text-9);">Work</a>
+      <a class="nav-link" href="#life" style="font-size:13px; color:var(--text-9);">Life</a>
+      <a class="nav-link" href="#contact" style="font-size:13px; color:var(--text-9);">Contact</a>
+      <div style="width:1px; height:14px; background:var(--border-12);"></div>
+      <ThemeToggle client:load />
+      <a
+        class="icon-link"
+        href={profile.socials.github}
+        style="font-family:'Geist Mono',monospace; font-size:10px; color:var(--text-9); padding:4px 7px; border:1px solid var(--border-12); border-radius:5px;"
+        >gh</a
+      >
+      <a
+        class="icon-link"
+        href={profile.socials.x}
+        style="font-family:'Geist Mono',monospace; font-size:10px; color:var(--text-9); padding:4px 7px; border:1px solid var(--border-12); border-radius:5px;"
+        >x</a
+      >
+      <a
+        class="icon-link"
+        href={profile.socials.linkedin}
+        style="font-family:'Geist Mono',monospace; font-size:10px; color:var(--text-9); padding:4px 7px; border:1px solid var(--border-12); border-radius:5px;"
+        >li</a
+      >
+      <span
+        style="display:flex; align-items:center; gap:6px; font-size:12px; font-weight:500; color:var(--accent); white-space:nowrap;"
+      >
+        <span
+          style="width:6px; height:6px; border-radius:50%; background:var(--accent); box-shadow:0 0 8px var(--accent);"
+        ></span>
+        {profile.status}
+      </span>
+    </div>
+  </div>
+</div>

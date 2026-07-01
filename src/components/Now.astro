@@ -1,0 +1,103 @@
+---
+import { profile, nowItems } from "../data/profile";
+---
+
+<div id="now" style="max-width:840px;">
+  <div style="font-family:'Geist Mono',monospace; font-size:13px; margin-bottom:14px; letter-spacing:0.02em;">
+    <span style="color:var(--faint);">&lt;/</span><span style="color:var(--accent);">now</span><span
+      style="color:var(--faint);">&gt;</span>
+  </div>
+  <h1
+    style="font-size:40px; font-weight:700; line-height:1.06; letter-spacing:-0.03em; color:var(--text1); margin-bottom:36px; max-width:600px;"
+  >
+    {profile.headline}
+  </h1>
+  <ul style="display:flex; flex-direction:column; gap:22px; margin-bottom:32px;">
+    {
+      nowItems.map((item) => (
+        <li
+          style="display:flex; gap:14px; align-items:flex-start; font-size:15.5px; color:var(--text-9); line-height:1.7;"
+        >
+          {item.logo ? (
+            <span style="flex:none; width:28px; height:28px; border-radius:8px; border:1px solid var(--border-10); background:var(--card); display:flex; align-items:center; justify-content:center; overflow:hidden; margin-top:1px;">
+              <img src={item.logo} style="width:16px;height:16px;object-fit:contain;" alt="" />
+            </span>
+          ) : (
+            <span style="flex:none; width:28px; text-align:center; margin-top:1px;">{item.emoji}</span>
+          )}
+          <span set:html={item.html} />
+        </li>
+      ))
+    }
+  </ul>
+  <div style="display:flex; gap:12px; align-items:center;">
+    <a
+      class="icon-link"
+      href={`mailto:${profile.email}`}
+      aria-label="Email"
+      style="display:flex; align-items:center; justify-content:center; width:42px; height:42px; border-radius:50%; border:1px solid var(--border-12); color:var(--muted2);"
+    >
+      <svg
+        width="17"
+        height="17"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+        <path d="m2 6 10 7L22 6"></path>
+      </svg>
+    </a>
+    <a
+      class="icon-link"
+      href={profile.socials.github}
+      aria-label="GitHub"
+      style="display:flex; align-items:center; justify-content:center; width:42px; height:42px; border-radius:50%; border:1px solid var(--border-12); color:var(--muted2);"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.7 18 5 18 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"
+        ></path>
+      </svg>
+    </a>
+    <a
+      class="icon-link"
+      href={profile.whatsapp}
+      aria-label="WhatsApp"
+      style="display:flex; align-items:center; justify-content:center; width:42px; height:42px; border-radius:50%; border:1px solid var(--border-12); color:var(--muted2);"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M.1 24l1.7-6.2A11.9 11.9 0 1 1 12 24a11.9 11.9 0 0 1-5.7-1.5L.1 24Zm6.6-3.8.4.2a9.9 9.9 0 1 0-3.4-3.4l.2.4-1 3.7 3.8-.9Zm11.4-5.5c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a8 8 0 0 1-2.4-1.5 9 9 0 0 1-1.6-2.1c-.2-.3 0-.4.1-.6l.4-.5.3-.5v-.5c0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 5 4.3 1.8.8 2.5.8 3.4.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.5-.3Z"
+        ></path>
+      </svg>
+    </a>
+    <a
+      class="icon-link"
+      href={profile.socials.linkedin}
+      aria-label="LinkedIn"
+      style="display:flex; align-items:center; justify-content:center; width:42px; height:42px; border-radius:50%; border:1px solid var(--border-12); color:var(--muted2);"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2ZM8 19H5v-9h3v9ZM6.5 8.3a1.7 1.7 0 1 1 0-3.5 1.7 1.7 0 0 1 0 3.5ZM19 19h-3v-4.7c0-1.1 0-2.5-1.5-2.5S12.7 13 12.7 14.2V19h-3v-9h2.9v1.2h.04a3.2 3.2 0 0 1 2.9-1.6c3.1 0 3.7 2 3.7 4.7V19Z"
+        ></path>
+      </svg>
+    </a>
+    <a
+      class="icon-link"
+      href={profile.socials.x}
+      aria-label="Twitter"
+      style="display:flex; align-items:center; justify-content:center; width:42px; height:42px; border-radius:50%; border:1px solid var(--border-12); color:var(--muted2);"
+    >
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M18.2 2h3.3l-7.2 8.2L22.8 22h-6.6l-5.2-6.8L4.9 22H1.6l7.7-8.8L1.2 2h6.8l4.7 6.2L18.2 2Zm-1.2 18h1.8L7.1 3.9H5.2L17 20Z"
+        ></path>
+      </svg>
+    </a>
+  </div>
+</div>

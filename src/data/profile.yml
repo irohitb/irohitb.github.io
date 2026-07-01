@@ -1,0 +1,27 @@
+# Core identity, links, and the "</now>" intro bullets. Hand-edited (no API).
+profile:
+  name: "Rohit Bhatia"
+  headline: "AI engineer building intelligent systems that move revenue."
+  status: "Open to AI roles"
+  email: "irohit.dev@outlook.com"
+  whatsapp: "https://wa.me/14155550123"
+  socials:
+    github: "https://github.com/irohitb"
+    githubUser: "irohitb"
+    x: "https://x.com/irohit_bhatia"
+    linkedin: "https://linkedin.com/in/irbhatia/"
+    npm: "https://npmjs.com/~irohitbhatia"
+  resumeUrl: "#"
+
+# `strong` segments are highlighted. Each item has a `logo` OR an `emoji`.
+nowItems:
+  - logo: "/assets/rime.png"
+    html: 'Building low-latency <strong>Voice AI at Rime</strong> — agent orchestration &amp; streaming, driving <strong>10× revenue growth</strong>.'
+  - logo: "/assets/rtzen.png"
+    html: 'Engineering Lead at <strong>Rtzen</strong> — fully autonomous <strong>AI agents for FinOps</strong>, ~70% efficiency gains.'
+  - logo: "/assets/dyte.png"
+    html: 'Founding engineer at <strong>Dyte</strong> <span class="muted">(acq. Cloudflare)</span> — a multi-platform WebRTC SDK at parity with Twilio &amp; Zoom in a month.'
+  - logo: "/assets/meter.png"
+    html: 'Engineer at <strong>Meter</strong> — internet as infrastructure, used by <strong>OpenAI, Cursor &amp; Perplexity</strong>.'
+  - emoji: "🏆"
+    html: '<strong>Google Code Finalist</strong> · 2 unicorns · 1 acquisition · ex-founder, scaled to 50+ locations.'

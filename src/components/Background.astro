@@ -1,0 +1,22 @@
+---
+// Fixed decorative layers: dot grid, animated glows, and a fade overlay.
+---
+
+<div
+  style="position:fixed; inset:0; z-index:0; pointer-events:none; background-color:var(--bg); background-image:radial-gradient(circle, var(--dot) 1px, transparent 1.3px); background-size:24px 24px;"
+>
+</div>
+<div style="position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden;">
+  <div
+    style="position:absolute; width:580px; height:580px; top:-240px; right:-160px; background:radial-gradient(circle, var(--glow1), transparent 70%); filter:blur(24px); animation:glowA 26s ease-in-out infinite;"
+  >
+  </div>
+  <div
+    style="position:absolute; width:480px; height:480px; bottom:-220px; left:-160px; background:radial-gradient(circle, var(--glow2), transparent 70%); filter:blur(24px); animation:glowB 30s ease-in-out infinite;"
+  >
+  </div>
+</div>
+<div
+  style="position:fixed; inset:0; z-index:0; pointer-events:none; background:linear-gradient(180deg, var(--fade-a), var(--fade-b));"
+>
+</div>
