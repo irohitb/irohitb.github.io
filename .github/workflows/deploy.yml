@@ -25,6 +25,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Turns on GitHub Pages with "GitHub Actions" as the source on first run,
+      # so you don't have to flip it in Settings → Pages by hand.
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
