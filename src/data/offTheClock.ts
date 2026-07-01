@@ -12,6 +12,7 @@ export interface Blog {
 export interface Movie {
   title: string;
   meta: string;
+  trailer: string;
 }
 
 interface OffTheClockFile {
