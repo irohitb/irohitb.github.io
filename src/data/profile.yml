@@ -15,13 +15,13 @@ profile:
 
 # `strong` segments are highlighted. Each item has a `logo` OR an `emoji`.
 nowItems:
-  - logo: "/assets/rime.png"
+  - logo: "/assets/rime.jpeg"
     html: 'Building low-latency <strong>Voice AI at Rime</strong> — agent orchestration &amp; streaming, driving <strong>10× revenue growth</strong>.'
   - logo: "/assets/rtzen.png"
     html: 'Engineering Lead at <strong>Rtzen</strong> — fully autonomous <strong>AI agents for FinOps</strong>, ~70% efficiency gains.'
-  - logo: "/assets/dyte.png"
+  - logo: "/assets/cloudflare.jpeg"
     html: 'Founding engineer at <strong>Dyte</strong> <span class="muted">(acq. Cloudflare)</span> — a multi-platform WebRTC SDK at parity with Twilio &amp; Zoom in a month.'
-  - logo: "/assets/meter.png"
+  - logo: "/assets/meter.jpeg"
     html: 'Engineer at <strong>Meter</strong> — internet as infrastructure, used by <strong>OpenAI, Cursor &amp; Perplexity</strong>.'
   - emoji: "🏆"
     html: '<strong>Google Code Finalist</strong> · 2 unicorns · 1 acquisition · ex-founder, scaled to 50+ locations.'
