@@ -7,7 +7,7 @@ import { loadYaml } from "./_load";
 export interface Track {
   track: string;
   artist: string;
-  plays?: number;
+  youtube?: string;
 }
 
 export interface Music {

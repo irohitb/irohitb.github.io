@@ -6,16 +6,16 @@ nowPlaying:
 topTracks:
   - track: "End of Beginning"
     artist: "Djo"
-    plays: 52
+    youtube: "https://www.youtube.com/watch?v=xy3AcmW0lrQ"
   - track: "Viva la Vida"
     artist: "Coldplay"
-    plays: 44
+    youtube: "https://www.youtube.com/watch?v=dvgZkm1xWPE"
   - track: "Instant Crush"
     artist: "Daft Punk"
-    plays: 39
+    youtube: "https://www.youtube.com/watch?v=a5uQMwRMHcs"
   - track: "Circles"
     artist: "Post Malone"
-    plays: 33
+    youtube: "https://www.youtube.com/watch?v=wXhTHyIgQ_U"
   - track: "Lose My Mind"
     artist: "Don Toliver, Doja Cat"
-    plays: 27
+    youtube: "https://www.youtube.com/watch?v=WWEs82u37Mw"
