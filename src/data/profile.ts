@@ -5,7 +5,6 @@ import { loadYaml } from "./_load";
 
 export interface Profile {
   name: string;
-  headline: string;
   status: string;
   email: string;
   whatsapp: string;
@@ -34,7 +33,6 @@ interface ProfileFile {
 const FALLBACK: ProfileFile = {
   profile: {
     name: "Rohit Bhatia",
-    headline: "",
     status: "",
     email: "",
     whatsapp: "#",

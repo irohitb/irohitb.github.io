@@ -7,12 +7,7 @@ import { profile, nowItems } from "../data/profile";
     <span style="color:var(--faint);">&lt;/</span><span style="color:var(--accent);">now</span><span
       style="color:var(--faint);">&gt;</span>
   </div>
-  <h1
-    style="font-size:40px; font-weight:700; line-height:1.06; letter-spacing:-0.03em; color:var(--text1); margin-bottom:36px; max-width:600px;"
-  >
-    {profile.headline}
-  </h1>
-  <ul style="display:flex; flex-direction:column; gap:22px; margin-bottom:32px;">
+  <ul style="display:flex; flex-direction:column; gap:22px; margin-top:24px; margin-bottom:32px;">
     {
       nowItems.map((item) => (
         <li
