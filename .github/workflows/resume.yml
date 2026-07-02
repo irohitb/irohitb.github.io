@@ -1,0 +1,42 @@
+name: resume
+
+# Manually trigger to pull the latest résumé from the Google Doc (configured in
+# src/data/profile.yml → resume.sourceDocId), export it to PDF, and open a PR
+# with the updated public/resume.pdf. Review + merge to publish.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-resume:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Export résumé Google Doc → PDF
+        run: npm run build:resume
+
+      - name: Open a PR with the updated résumé
+        uses: peter-evans/create-pull-request@v6
+        with:
+          add-paths: public/resume.pdf
+          branch: chore/update-resume
+          commit-message: "chore(resume): refresh public/resume.pdf from Google Doc"
+          title: "Update résumé PDF"
+          body: |
+            Automated résumé refresh from the source Google Doc
+            (`resume.sourceDocId` in `src/data/profile.yml`).
+
+            Merge to publish the new `public/resume.pdf`.
+          delete-branch: true

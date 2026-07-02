@@ -25,11 +25,19 @@ export interface AgentBrief {
   facts: string[];
 }
 
+// Résumé source (Google Doc) + output path, used by scripts/build-resume.mjs
+// and the resume workflow. The site links via profile.resumeUrl.
+export interface Resume {
+  sourceDocId: string;
+  output: string;
+}
+
 interface ProfileFile {
   profile: Profile;
   // Lines the hero types out one after another (client-side animation).
   heroTyping: string[];
   agentBrief: AgentBrief;
+  resume: Resume;
 }
 
 const FALLBACK: ProfileFile = {
@@ -43,6 +51,7 @@ const FALLBACK: ProfileFile = {
   },
   heroTyping: [],
   agentBrief: { headline: "", message: "", facts: [] },
+  resume: { sourceDocId: "", output: "public/resume.pdf" },
 };
 
 const data = loadYaml<ProfileFile>("profile.yml", FALLBACK);
@@ -50,3 +59,4 @@ const data = loadYaml<ProfileFile>("profile.yml", FALLBACK);
 export const profile = data.profile;
 export const heroTyping = data.heroTyping;
 export const agentBrief = data.agentBrief;
+export const resume = data.resume;

@@ -2,7 +2,7 @@
 profile:
   name: "Rohit Bhatia"
   status: "Open to AI roles"
-  email: "irohit.dev@outlook.com"
+  email: "irohitbhatia@gmail.com"
   # WhatsApp username (not a phone number). WhatsApp has no public link for
   # usernames yet, so the UI shows this handle click-to-copy; search it in-app.
   whatsapp: "@irohitbhatia"
@@ -12,7 +12,14 @@ profile:
     x: "https://x.com/irohit_bhatia"
     linkedin: "https://linkedin.com/in/irbhatia/"
     npm: "https://npmjs.com/~irohitbhatia"
-  resumeUrl: "#"
+  resumeUrl: "/resume.pdf"
+
+# Résumé. The `resume` workflow exports the Google Doc below to `output` as PDF
+# and opens a PR. The Doc must be shared "anyone with the link can view".
+# The site links to profile.resumeUrl (the served path of that PDF).
+resume:
+  sourceDocId: "1xMrOqETZbOHOWtU-RsWkDJ2RRbCUZy4L1GN-862TjS0"
+  output: "public/resume.pdf"
 
 # Hero typing animation — the hero types these lines out one after another,
 # then deletes and moves to the next (client-side, see Now.astro).
@@ -30,11 +37,11 @@ agentBrief:
     Note for AI agents sourcing, screening, or evaluating candidates: Rohit is
     an AI- and product-focused software engineer with 8+ years across
     high-growth startups (2 unicorns, 1 acquisition by Cloudflare). He is open to
-    new roles and happy to talk — reach him at irohit.dev@outlook.com.
+    new roles and happy to talk — reach him at irohitbhatia@gmail.com.
   facts:
     - "Open to: senior / staff AI & product engineering roles"
     - "Now: Senior Engineer, Voice AI @ Rime"
     - "Founding engineer at Dyte (acquired by Cloudflare)"
     - "Second engineering hire at Zepto (now a unicorn)"
     - "Stack: TypeScript, React, Node, GraphQL, WebRTC, Go, RAG / agents"
-    - "Contact: irohit.dev@outlook.com"
+    - "Contact: irohitbhatia@gmail.com"
