@@ -2,11 +2,12 @@ name: github-contributions
 
 # Refresh src/data/github.yml from the GitHub GraphQL API and commit it, so the
 # site's contribution count stays current — same "update the YAML" model as the
-# health workflow. Runs daily and on demand.
+# health workflow. Runs hourly and on demand. Each commit here triggers the
+# deploy workflow, so the live site refreshes within the hour.
 
 on:
   schedule:
-    - cron: "0 6 * * *" # daily at 06:00 UTC
+    - cron: "0 * * * *" # every hour, on the hour (UTC)
   workflow_dispatch:
 
 permissions:

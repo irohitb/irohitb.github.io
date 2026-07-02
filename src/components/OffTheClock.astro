@@ -30,15 +30,12 @@ const favicon = (url: string) => {
             href={m.trailer}
             target="_blank"
             rel="noopener"
-            style="display:flex; align-items:center; gap:14px; padding:13px 0;"
+            style="display:block; padding:13px 0;"
           >
-            <span style="flex:1; min-width:0;">
-              <span style="display:block; font-size:14.5px; font-weight:500; color:var(--text-d4); line-height:1.4; margin-bottom:3px;">
-                {m.title}
-              </span>
-              <span style="display:block; font-size:12px; color:var(--muted);">{m.meta}</span>
+            <span style="display:block; font-size:14.5px; font-weight:500; color:var(--text-d4); line-height:1.4; margin-bottom:3px;">
+              {m.title} <span style="color:var(--muted); font-size:12.5px;">↗</span>
             </span>
-            <span style="flex:none; font-size:14px; color:var(--muted);">↗</span>
+            <span style="display:block; font-size:12px; color:var(--muted);">{m.meta}</span>
           </a>
         ))
       }
@@ -56,15 +53,12 @@ const favicon = (url: string) => {
             href={t.youtube}
             target="_blank"
             rel="noopener"
-            style="display:flex; align-items:center; gap:14px; padding:13px 0;"
+            style="display:block; padding:13px 0;"
           >
-            <span style="flex:1; min-width:0;">
-              <span style="display:block; font-size:14.5px; font-weight:500; color:var(--text-d4); line-height:1.4; margin-bottom:3px;">
-                {t.track}
-              </span>
-              <span style="display:block; font-size:12px; color:var(--muted);">{t.artist}</span>
+            <span style="display:block; font-size:14.5px; font-weight:500; color:var(--text-d4); line-height:1.4; margin-bottom:3px;">
+              {t.track} <span style="color:var(--muted); font-size:12.5px;">↗</span>
             </span>
-            <span style="flex:none; font-size:14px; color:var(--muted);">↗</span>
+            <span style="display:block; font-size:12px; color:var(--muted);">{t.artist}</span>
           </a>
         ))
       }
