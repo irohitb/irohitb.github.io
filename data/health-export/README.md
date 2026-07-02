@@ -1,39 +1,52 @@
 # Apple Health export → site
 
-Drop an Apple Health export **in this folder**, commit, and push. The
-[`health` GitHub Action](../../.github/workflows/health.yml) parses it,
-regenerates [`src/data/health.yml`](../../src/data/health.yml), commits the
-result, and the site rebuilds from it.
+Produce a monthly export on your phone, drop it **in this folder**, and run:
 
-There is no cloud API for Apple Health, so this is the automation: you produce
-the export on your phone, this repo turns it into the numbers shown on the site.
+```bash
+npm run build:health   # parses the newest export → src/data/health.yml
+```
 
-## Two accepted formats
+Then commit **`src/data/health.yml`** (the 3 summary numbers) and push. The site
+rebuilds from it.
 
-### 1. Health Auto Export — JSON (recommended)
+> **Privacy:** the raw export files here are **git-ignored** — they contain
+> granular data (heart rate, sleep, per-workout details) that should not live in
+> a public repo. Only the derived summary `src/data/health.yml` is committed. So
+> the flow is "drop file → run `build:health` → commit health.yml", not "commit
+> the raw export".
 
-The [Health Auto Export](https://www.healthexportapp.com/) iOS app produces
-small, clean JSON. Best for committing to git.
+There is no cloud API for Apple Health, so this is the pipeline: you produce the
+export on your phone, this repo turns it into the numbers shown on the site. The
+numbers are taken over the **whole export period** (one month per file).
 
-1. In the app, export **Steps**, **Active Energy**, and **Workouts** as JSON.
-2. Save the `.json` file here (any name, e.g. `health.json`).
-3. Commit & push.
+## Accepted formats
 
-Expected shape:
+### 1. Health Export Kit — JSON (the app in use)
+
+Already summarised per month. The parser reads `activity.totals`,
+`activity.daily`, and `activity.workouts`. Just drop the `.json` here — any name
+(e.g. `health-export-json-2026-06-01-0000_to_2026-06-30-0000.json`).
+
+Shape (abridged):
 
 ```json
 {
-  "data": {
-    "metrics": [
-      { "name": "step_count",    "units": "count", "data": [ { "date": "2026-06-01 00:00:00 +0000", "qty": 8432 } ] },
-      { "name": "active_energy", "units": "kcal",  "data": [ { "date": "2026-06-01 00:00:00 +0000", "qty": 540 } ] }
-    ],
-    "workouts": [ { "name": "Running", "start": "2026-06-01 07:00:00 +0000" } ]
+  "meta": { "app": "Health Export Kit" },
+  "activity": {
+    "daily":    [ { "date": "2026-06-01", "steps": 10427, "activeEnergyKcal": 429.4, "workoutCount": 1 } ],
+    "totals":   { "steps": 380038, "activeEnergyKcal": 8081.9, "workoutCount": 19 },
+    "workouts": [ { "start": "2026-06-01T09:34:00Z", "durationSec": 4400 } ]
   }
 }
 ```
 
-### 2. Native Apple Health export (`export.zip` / `export.xml`)
+### 2. Health Auto Export — JSON (`data.metrics`)
+
+The [Health Auto Export](https://www.healthexportapp.com/) app format
+(`step_count` / `active_energy` metrics + `workouts`). Filtered to the current
+calendar month.
+
+### 3. Native Apple Health export (`export.zip` / `export.xml`)
 
 From the iOS Health app: profile picture → **Export All Health Data** → you get
 `export.zip` containing `export.xml`.

@@ -3,3 +3,10 @@ dist/
 .astro/
 .env
 .DS_Store
+
+# Raw Apple Health exports contain granular personal data (heart rate, sleep,
+# per-workout details). Keep them OUT of the public repo — only the derived
+# summary in src/data/health.yml is committed.
+data/health-export/*.json
+data/health-export/*.xml
+data/health-export/*.zip
