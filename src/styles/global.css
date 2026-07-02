@@ -210,11 +210,17 @@ html[data-view="agent"] .view-btn[data-view-set="agent"] {
     display: none !important;
   }
 
-  /* Stack Recommendations + Work */
+  /* Stack Recommendations + Work full-width. align-items:flex-start on the row
+     collapses each child to its content width when column-stacked; stretch
+     forces them to fill the container. */
   .section-row {
     flex-direction: column !important;
+    align-items: stretch !important;
     gap: 48px !important;
     margin-top: 56px !important;
+  }
+  .section-row > * {
+    width: 100% !important;
   }
 
   /* Life: 4 cols -> 2 cols */
