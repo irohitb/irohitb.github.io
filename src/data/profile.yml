@@ -3,7 +3,9 @@ profile:
   name: "Rohit Bhatia"
   status: "Open to AI roles"
   email: "irohit.dev@outlook.com"
-  whatsapp: "https://wa.me/9188105060137"
+  # WhatsApp username (not a phone number). WhatsApp has no public link for
+  # usernames yet, so the UI shows this handle click-to-copy; search it in-app.
+  whatsapp: "@irohitbhatia"
   socials:
     github: "https://github.com/irohitb"
     githubUser: "irohitb"

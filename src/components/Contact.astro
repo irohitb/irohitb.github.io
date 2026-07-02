@@ -20,7 +20,16 @@ import { profile } from "../data/profile";
       style="display:inline-block; font-size:14px; font-weight:600; color:var(--btn-fg); background:var(--text1); padding:11px 22px; border-radius:8px;"
       >{profile.email} →</a
     >
-    <div style="display:flex; gap:8px;">
+    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+      <button
+        type="button"
+        class="icon-link"
+        data-copy={profile.whatsapp}
+        title="Click to copy, then search it in WhatsApp"
+        style="font-family:'Geist Mono',monospace; font-size:11px; color:var(--text-9); padding:7px 12px; border:1px solid var(--border-12); border-radius:6px; background:transparent; cursor:pointer;"
+      >
+        <span data-copy-label>WhatsApp · {profile.whatsapp}</span>
+      </button>
       <a
         class="icon-link"
         href={profile.socials.github}
@@ -48,3 +57,28 @@ import { profile } from "../data/profile";
     </div>
   </div>
 </div>
+
+<script is:inline>
+  // Click-to-copy for any [data-copy] element (e.g. the WhatsApp username).
+  // WhatsApp has no public username link, so copying the handle is how people
+  // "connect" — copy, then search it in WhatsApp. Delegated so it covers the
+  // hero icon and the contact pill.
+  document.addEventListener("click", function (e) {
+    var el = e.target.closest("[data-copy]");
+    if (!el) return;
+    e.preventDefault();
+    try {
+      navigator.clipboard.writeText(el.getAttribute("data-copy"));
+    } catch (err) {}
+    var label = el.querySelector("[data-copy-label]");
+    if (label && !el.dataset.copied) {
+      var orig = label.textContent;
+      el.dataset.copied = "1";
+      label.textContent = "Copied ✓";
+      setTimeout(function () {
+        label.textContent = orig;
+        delete el.dataset.copied;
+      }, 1400);
+    }
+  });
+</script>
