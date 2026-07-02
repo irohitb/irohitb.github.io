@@ -7,6 +7,7 @@ export interface WorkEntry {
   role: string;
   year: string;
   href: string;
+  does?: string;
   logo?: string;
   note?: string;
   star?: boolean;

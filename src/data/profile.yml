@@ -18,7 +18,7 @@ nowItems:
     html: 'Building low-latency <strong>Voice AI at Rime</strong> — agent orchestration &amp; streaming, driving <strong>10× revenue growth</strong>.'
   - logo: "/assets/rtzen.svg"
     html: 'Engineering Lead at <strong>Rtzen</strong> — fully autonomous <strong>AI agents for FinOps</strong>, ~70% efficiency gains.'
-  - logo: "/assets/cloudflare.jpeg"
+  - logo: "/assets/dyte.jpeg"
     html: 'Founding engineer at <strong>Dyte</strong> <span class="muted">(acq. Cloudflare)</span> — a multi-platform WebRTC SDK at parity with Twilio &amp; Zoom in a month.'
   - logo: "/assets/meter.jpeg"
     html: 'Engineer at <strong>Meter</strong> — internet as infrastructure, used by <strong>OpenAI, Cursor &amp; Perplexity</strong>.'
