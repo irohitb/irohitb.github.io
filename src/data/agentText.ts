@@ -6,7 +6,7 @@ import { profile, agentBrief } from "./profile";
 import { work } from "./work";
 
 export function buildAgentText(): string {
-  const site = "https://irohitb.github.io/";
+  const site = "https://rohitbhatia.com/";
   const lines: string[] = [];
 
   lines.push(`# ${profile.name}`);
