@@ -1,0 +1,25 @@
+---
+// /agent — a bare, text-only brief for AI agents. Deliberately NOT the site
+// layout: no fonts, theme, background, images, animation, or scripts. Just the
+// markdown text in a <pre>, so it reads like a raw .md file. The tiny style
+// block only sets system colors so the text is readable in light or dark — no
+// design. (Served as HTML because GitHub Pages downloads extensionless files;
+// /llms.txt is the equivalent raw text/plain endpoint.)
+import { buildAgentText } from "../data/agentText";
+const text = buildAgentText();
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    color-scheme: light dark;
+  }
+  body {
+    margin: 0;
+    background: Canvas;
+    color: CanvasText;
+  }
+</style>
+<pre
+  style="font:14px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace; white-space:pre-wrap; word-wrap:break-word; max-width:760px; margin:24px;">{text}</pre>
