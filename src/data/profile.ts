@@ -1,4 +1,4 @@
-// Core identity, links, and the "</now>" intro bullets.
+// Core identity, links, and the hero typing-animation lines.
 // Data in profile.yml (hand-edited — pure static content, no API).
 
 import { loadYaml } from "./_load";
@@ -18,16 +18,10 @@ export interface Profile {
   resumeUrl: string;
 }
 
-// `strong` segments are highlighted. Each item has a `logo` OR an `emoji`.
-export interface NowItem {
-  html: string;
-  logo?: string;
-  emoji?: string;
-}
-
 interface ProfileFile {
   profile: Profile;
-  nowItems: NowItem[];
+  // Lines the hero types out one after another (client-side animation).
+  heroTyping: string[];
 }
 
 const FALLBACK: ProfileFile = {
@@ -39,10 +33,10 @@ const FALLBACK: ProfileFile = {
     socials: { github: "#", githubUser: "", x: "#", linkedin: "#", npm: "#" },
     resumeUrl: "#",
   },
-  nowItems: [],
+  heroTyping: [],
 };
 
 const data = loadYaml<ProfileFile>("profile.yml", FALLBACK);
 
 export const profile = data.profile;
-export const nowItems = data.nowItems;
+export const heroTyping = data.heroTyping;

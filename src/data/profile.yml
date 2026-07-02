@@ -12,15 +12,10 @@ profile:
     npm: "https://npmjs.com/~irohitbhatia"
   resumeUrl: "#"
 
-# `strong` segments are highlighted. Each item has a `logo` OR an `emoji`.
-nowItems:
-  - logo: "/assets/rime.jpeg"
-    html: 'Building low-latency <strong>Voice AI at Rime</strong> — agent orchestration &amp; streaming, driving <strong>10× revenue growth</strong>.'
-  - logo: "/assets/rtzen.svg"
-    html: 'Engineering Lead at <strong>Rtzen</strong> — fully autonomous <strong>AI agents for FinOps</strong>, ~70% efficiency gains.'
-  - logo: "/assets/dyte.jpeg"
-    html: 'Founding engineer at <strong>Dyte</strong> <span class="muted">(acq. Cloudflare)</span> — a multi-platform WebRTC SDK at parity with Twilio &amp; Zoom in a month.'
-  - logo: "/assets/meter.jpeg"
-    html: 'Engineer at <strong>Meter</strong> — internet as infrastructure, used by <strong>OpenAI, Cursor &amp; Perplexity</strong>.'
-  - emoji: "🏆"
-    html: '<strong>Google Code Finalist</strong> · 2 unicorns · 1 acquisition · ex-founder, scaled to 50+ locations.'
+# Hero typing animation — the hero types these lines out one after another,
+# then deletes and moves to the next (client-side, see Now.astro).
+heroTyping:
+  - "Founding engineer at Dyte — acquired by Cloudflare"
+  - "Second engineering hire at Zepto — now a unicorn"
+  - "Early at Meter (unicorn) — serving Reddit, Cursor & Perplexity"
+  - "Ex-founder — scaled operations to 50+ locations"

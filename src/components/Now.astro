@@ -1,30 +1,11 @@
 ---
-import { profile, nowItems } from "../data/profile";
+import { profile, heroTyping } from "../data/profile";
 ---
 
 <div id="now" style="max-width:840px;">
-  <div style="font-family:'Geist Mono',monospace; font-size:13px; margin-bottom:14px; letter-spacing:0.02em;">
-    <span style="color:var(--faint);">&lt;/</span><span style="color:var(--accent);">now</span><span
-      style="color:var(--faint);">&gt;</span>
+  <div class="hero-typing" data-phrases={JSON.stringify(heroTyping)}>
+    <span id="hero-type-text"></span><span id="hero-type-cursor" aria-hidden="true"></span>
   </div>
-  <ul style="display:flex; flex-direction:column; gap:22px; margin-top:24px; margin-bottom:32px;">
-    {
-      nowItems.map((item) => (
-        <li
-          style="display:flex; gap:14px; align-items:flex-start; font-size:15.5px; color:var(--text-9); line-height:1.7;"
-        >
-          {item.logo ? (
-            <span style="flex:none; width:28px; height:28px; border-radius:8px; border:1px solid var(--border-10); background:var(--card); display:flex; align-items:center; justify-content:center; overflow:hidden; margin-top:1px;">
-              <img src={item.logo} style="width:16px;height:16px;object-fit:contain;" alt="" />
-            </span>
-          ) : (
-            <span style="flex:none; width:28px; text-align:center; margin-top:1px;">{item.emoji}</span>
-          )}
-          <span set:html={item.html} />
-        </li>
-      ))
-    }
-  </ul>
   <div style="display:flex; gap:12px; align-items:center;">
     <a
       class="icon-link"
@@ -96,3 +77,110 @@ import { profile, nowItems } from "../data/profile";
     </a>
   </div>
 </div>
+
+<script is:inline>
+  // Hero typing animation (ported from the v2 design). Types each phrase out,
+  // holds, deletes, and moves to the next — looping forever. Client-side only;
+  // the static build ships an empty span that this fills in on load. Phrases
+  // come from the data-phrases attribute (populated from profile.yml).
+  const wrap = document.querySelector(".hero-typing");
+  const textEl = document.getElementById("hero-type-text");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let phrases = [];
+  try {
+    phrases = JSON.parse((wrap && wrap.dataset.phrases) || "[]");
+  } catch (e) {
+    phrases = [];
+  }
+
+  if (textEl && Array.isArray(phrases) && phrases.length) {
+    if (reduce) {
+      // Respect reduced-motion: show the first line statically, no animation.
+      textEl.textContent = phrases[0];
+      const c = document.getElementById("hero-type-cursor");
+      if (c) c.style.display = "none";
+    } else {
+      const TYPE = 45; // ms per character typed
+      const DELETE = 25; // ms per character deleted
+      const HOLD = 1600; // pause once a phrase is fully typed
+      const BETWEEN = 400; // pause after clearing, before the next phrase
+      let p = 0;
+      let i = 0;
+      let deleting = false;
+
+      const tick = () => {
+        const phrase = phrases[p];
+        i += deleting ? -1 : 1;
+        textEl.textContent = phrase.slice(0, i);
+
+        let delay;
+        if (!deleting && i >= phrase.length) {
+          deleting = true;
+          delay = HOLD;
+        } else if (deleting && i <= 0) {
+          deleting = false;
+          p = (p + 1) % phrases.length;
+          delay = BETWEEN;
+        } else {
+          delay = deleting ? DELETE : TYPE;
+        }
+        setTimeout(tick, delay);
+      };
+      tick();
+    }
+  }
+</script>
+
+<style>
+  .hero-typing {
+    max-width: 640px;
+    min-height: 92px;
+    margin-top: 8px;
+    margin-bottom: 36px;
+  }
+
+  #hero-type-text {
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 1.18;
+    letter-spacing: -0.025em;
+    color: var(--text1);
+  }
+
+  #hero-type-cursor {
+    display: inline-block;
+    width: 10px;
+    height: 30px;
+    margin-left: 4px;
+    transform: translateY(5px);
+    background: var(--accent);
+    animation: hero-blink 1.05s step-end infinite;
+  }
+
+  @keyframes hero-blink {
+    0%,
+    50% {
+      opacity: 1;
+    }
+    50.01%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @media (max-width: 600px) {
+    #hero-type-text {
+      font-size: 30px;
+    }
+    #hero-type-cursor {
+      height: 24px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #hero-type-cursor {
+      animation: none;
+    }
+  }
+</style>
