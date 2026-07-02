@@ -8,10 +8,11 @@ import Work from "../components/Work.astro";
 import Life from "../components/Life.astro";
 import OffTheClock from "../components/OffTheClock.astro";
 import Contact from "../components/Contact.astro";
+import AgentView from "../components/AgentView.astro";
 ---
 
 <Base title="Rohit Bhatia — Portfolio">
-  <div style="position:relative; min-height:100vh;">
+  <div class="human-only" style="position:relative; min-height:100vh;">
     <Background />
     <Nav />
 
@@ -34,4 +35,6 @@ import Contact from "../components/Contact.astro";
       <Contact />
     </div>
   </div>
+
+  <AgentView />
 </Base>

@@ -55,15 +55,16 @@ import { profile } from "../data/profile";
 </div>
 
 <script is:inline>
-  // Human / Agent view toggle. Sets data-view on <html> (CSS shows/hides the
-  // agent brief) and persists the choice — same pattern as the theme toggle.
-  document.querySelectorAll("[data-view-set]").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      var v = btn.getAttribute("data-view-set");
-      document.documentElement.setAttribute("data-view", v);
-      try {
-        localStorage.setItem("view", v);
-      } catch (e) {}
-    });
+  // Human / Agent view toggle. Sets data-view on <html> (CSS swaps the whole
+  // page between the normal site and the plain-text agent view) and persists
+  // the choice. Delegated so it also handles the toggle inside the agent view.
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest("[data-view-set]");
+    if (!btn) return;
+    var v = btn.getAttribute("data-view-set");
+    document.documentElement.setAttribute("data-view", v);
+    try {
+      localStorage.setItem("view", v);
+    } catch (err) {}
   });
 </script>

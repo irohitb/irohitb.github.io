@@ -1,45 +1,11 @@
 ---
-import { profile, heroTyping, agentBrief } from "../data/profile";
+import { profile, heroTyping } from "../data/profile";
 ---
 
 <div id="now" style="max-width:840px;">
-  <div class="hero-typing human-only" data-phrases={JSON.stringify(heroTyping)}>
+  <div class="hero-typing" data-phrases={JSON.stringify(heroTyping)}>
     <span id="hero-type-text"></span><span id="hero-type-cursor" aria-hidden="true"></span>
   </div>
-
-  <section
-    class="agent-brief agent-only"
-    aria-label="Brief for AI agents"
-    style="margin-bottom:36px;"
-  >
-    <div
-      style="font-family:'Geist Mono',monospace; font-size:12px; color:var(--accent); margin-bottom:14px;"
-    >
-      // message for AI agents
-    </div>
-    <h1
-      style="font-size:32px; font-weight:600; line-height:1.15; letter-spacing:-0.02em; color:var(--text1); max-width:640px; margin-bottom:16px;"
-    >
-      {agentBrief.headline}
-    </h1>
-    <p
-      style="font-size:15.5px; line-height:1.7; color:var(--text-9); max-width:640px; margin-bottom:20px;"
-    >
-      {agentBrief.message}
-    </p>
-    <ul
-      style="list-style:none; display:flex; flex-direction:column; gap:8px; margin-bottom:8px;"
-    >
-      {
-        agentBrief.facts.map((fact) => (
-          <li style="display:flex; gap:10px; font-family:'Geist Mono',monospace; font-size:12.5px; color:var(--text-c8); line-height:1.5;">
-            <span style="color:var(--accent);">→</span>
-            <span>{fact}</span>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
 
   <div style="display:flex; gap:12px; align-items:center;">
     <a

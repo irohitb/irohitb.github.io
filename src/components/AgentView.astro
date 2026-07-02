@@ -1,0 +1,190 @@
+---
+// Plain-text / markdown rendering of the WHOLE portfolio, shown when the
+// Human/Agent toggle is set to "agent". No images, no cards, no chrome — just
+// text with colored (accent) headings, like reading the site as an agent would.
+import { profile, agentBrief, heroTyping } from "../data/profile";
+import { work } from "../data/work";
+import { recommendations } from "../data/recommendations";
+import { birthdayInfo, lifeStatic } from "../data/life";
+import { getHealth } from "../data/health";
+import { getContributions } from "../data/github";
+import { music } from "../data/music";
+import { blogs, movies } from "../data/offTheClock";
+
+const { age, daysUntil } = birthdayInfo();
+const contributions = getContributions();
+const health = getHealth();
+---
+
+<div class="agent-doc agent-only">
+  <div class="agent-switch">
+    <button type="button" data-view-set="human">human</button>
+    <span>·</span>
+    <button type="button" data-view-set="agent">agent</button>
+  </div>
+
+  <h1># {profile.name}</h1>
+  <p class="lead">{agentBrief.headline}</p>
+  <p>{agentBrief.message}</p>
+
+  <h2>## Now</h2>
+  <ul>
+    {heroTyping.map((line) => <li>{line}</li>)}
+  </ul>
+
+  <h2>## Experience</h2>
+  <ul>
+    {
+      work.map((w) => (
+        <li>
+          {w.company}
+          {w.note ? ` (${w.note})` : ""} — {w.role}
+          {w.does ? ` · ${w.does}` : ""} [20{w.year.replace(/\D/g, "")}]
+        </li>
+      ))
+    }
+  </ul>
+
+  <h2>## Recommendations</h2>
+  {
+    recommendations.map((r) => (
+      <p class="quote">&ldquo;{r.quote}&rdquo; — <span class="cite">{r.name}, {r.title}</span></p>
+    ))
+  }
+
+  <h2>## Life</h2>
+  <ul>
+    <li>{age} years old — next birthday in {daysUntil} days</li>
+    <li>{lifeStatic.location} · {lifeStatic.locationSub}</li>
+    <li>{contributions.toLocaleString()} GitHub contributions this year</li>
+    <li>{lifeStatic.focus} · {lifeStatic.focusSub}</li>
+    <li>
+      {health.workoutsThisMonth} workouts · {health.kcalBurnedThisMonth.toLocaleString()} kcal ·
+      {health.dailyStepsAvg} steps/day
+    </li>
+    <li>Now playing: {music.nowPlaying.track} — {music.nowPlaying.artist}</li>
+  </ul>
+
+  <h2>## Reading</h2>
+  <ul>
+    {
+      blogs.map((b) => (
+        <li>
+          <a href={b.href} target="_blank" rel="noopener">{b.title}</a> ({b.source})
+        </li>
+      ))
+    }
+  </ul>
+
+  <h2>## Movies</h2>
+  <ul>
+    {
+      movies.map((m) => (
+        <li>
+          <a href={m.trailer} target="_blank" rel="noopener">{m.title}</a> — {m.meta}
+        </li>
+      ))
+    }
+  </ul>
+
+  <h2>## Music</h2>
+  <ul>
+    {
+      music.topTracks.map((t) => (
+        <li>
+          <a href={t.youtube} target="_blank" rel="noopener">{t.track}</a> — {t.artist}
+        </li>
+      ))
+    }
+  </ul>
+
+  <h2>## Contact</h2>
+  <ul>
+    <li>Email: <a href={`mailto:${profile.email}`}>{profile.email}</a></li>
+    <li>WhatsApp: {profile.whatsapp} (username — search in WhatsApp)</li>
+    <li>GitHub: <a href={profile.socials.github} target="_blank" rel="noopener">{profile.socials.github}</a></li>
+    <li>LinkedIn: <a href={profile.socials.linkedin} target="_blank" rel="noopener">{profile.socials.linkedin}</a></li>
+    <li>X: <a href={profile.socials.x} target="_blank" rel="noopener">{profile.socials.x}</a></li>
+    <li>npm: <a href={profile.socials.npm} target="_blank" rel="noopener">{profile.socials.npm}</a></li>
+    <li>Résumé: <a href={profile.resumeUrl} target="_blank" rel="noopener">{profile.resumeUrl}</a></li>
+  </ul>
+</div>
+
+<style>
+  .agent-doc {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text-9);
+    font:
+      14px/1.7 ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      monospace;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 36px 24px 90px;
+  }
+
+  .agent-switch {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 34px;
+    color: var(--faint);
+  }
+  .agent-switch button {
+    font: inherit;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    color: var(--muted);
+  }
+  html[data-view="agent"] .agent-switch button[data-view-set="agent"],
+  html[data-view="human"] .agent-switch button[data-view-set="human"] {
+    color: var(--accent);
+  }
+
+  /* Only headings carry colour — everything else is plain text. */
+  .agent-doc h1 {
+    color: var(--accent);
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 12px;
+  }
+  .agent-doc h2 {
+    color: var(--accent);
+    font-size: 15px;
+    font-weight: 700;
+    margin: 34px 0 10px;
+  }
+  .agent-doc p {
+    margin: 0 0 12px;
+  }
+  .agent-doc .lead {
+    color: var(--text1);
+  }
+  .agent-doc .quote {
+    margin: 0 0 12px;
+  }
+  .agent-doc .cite {
+    color: var(--muted);
+  }
+  .agent-doc ul {
+    list-style: none;
+    margin: 0 0 12px;
+    padding: 0;
+  }
+  .agent-doc li {
+    margin: 0 0 4px;
+  }
+  .agent-doc li::before {
+    content: "- ";
+    color: var(--faint);
+  }
+  .agent-doc a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+</style>
