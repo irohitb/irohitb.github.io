@@ -19,6 +19,10 @@ import { profile } from "../data/profile";
       <a class="nav-link" href="#life" style="font-size:13px; color:var(--text-9);">Life</a>
       <a class="nav-link" href="#contact" style="font-size:13px; color:var(--text-9);">Contact</a>
       <div style="width:1px; height:14px; background:var(--border-12);"></div>
+      <div class="view-toggle" role="group" aria-label="View as human or agent">
+        <button type="button" class="view-btn" data-view-set="human">Human</button>
+        <button type="button" class="view-btn" data-view-set="agent">Agent</button>
+      </div>
       <ThemeToggle client:load />
       <a
         class="icon-link"
@@ -49,3 +53,17 @@ import { profile } from "../data/profile";
     </div>
   </div>
 </div>
+
+<script is:inline>
+  // Human / Agent view toggle. Sets data-view on <html> (CSS shows/hides the
+  // agent brief) and persists the choice — same pattern as the theme toggle.
+  document.querySelectorAll("[data-view-set]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var v = btn.getAttribute("data-view-set");
+      document.documentElement.setAttribute("data-view", v);
+      try {
+        localStorage.setItem("view", v);
+      } catch (e) {}
+    });
+  });
+</script>

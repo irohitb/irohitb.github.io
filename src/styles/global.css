@@ -124,3 +124,44 @@ strong {
 .nav-link:hover {
   color: var(--text1);
 }
+
+/* ------------------------------------------------------------------ */
+/* Human / Agent view toggle                                          */
+/* Content marked .agent-only is shown only in Agent view; .human-only */
+/* is hidden in Agent view. Default (no/human) = human view.           */
+/* ------------------------------------------------------------------ */
+.agent-only {
+  display: none;
+}
+html[data-view="agent"] .agent-only {
+  display: block;
+}
+html[data-view="agent"] .human-only {
+  display: none;
+}
+
+/* segmented Human | Agent control in the nav */
+.view-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--border-12);
+  border-radius: 7px;
+}
+.view-btn {
+  font-family: "Geist Mono", monospace;
+  font-size: 10px;
+  line-height: 1;
+  color: var(--text-9);
+  background: transparent;
+  border: 0;
+  padding: 4px 7px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+html[data-view="human"] .view-btn[data-view-set="human"],
+html[data-view="agent"] .view-btn[data-view-set="agent"] {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+}

@@ -4,7 +4,7 @@ const { title = "Rohit Bhatia" } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" data-view="human">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -15,13 +15,17 @@ const { title = "Rohit Bhatia" } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    {/* Apply persisted theme before paint to avoid a flash. */}
+    {/* Apply persisted theme + view before paint to avoid a flash. */}
     <script is:inline>
       (function () {
         try {
           var t = localStorage.getItem("theme");
           if (t === "light" || t === "dark") {
             document.documentElement.setAttribute("data-theme", t);
+          }
+          var v = localStorage.getItem("view");
+          if (v === "human" || v === "agent") {
+            document.documentElement.setAttribute("data-view", v);
           }
         } catch (e) {}
       })();

@@ -18,10 +18,18 @@ export interface Profile {
   resumeUrl: string;
 }
 
+// Shown only in the "Agent" view of the Human/Agent toggle.
+export interface AgentBrief {
+  headline: string;
+  message: string;
+  facts: string[];
+}
+
 interface ProfileFile {
   profile: Profile;
   // Lines the hero types out one after another (client-side animation).
   heroTyping: string[];
+  agentBrief: AgentBrief;
 }
 
 const FALLBACK: ProfileFile = {
@@ -34,9 +42,11 @@ const FALLBACK: ProfileFile = {
     resumeUrl: "#",
   },
   heroTyping: [],
+  agentBrief: { headline: "", message: "", facts: [] },
 };
 
 const data = loadYaml<ProfileFile>("profile.yml", FALLBACK);
 
 export const profile = data.profile;
 export const heroTyping = data.heroTyping;
+export const agentBrief = data.agentBrief;
