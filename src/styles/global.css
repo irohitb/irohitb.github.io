@@ -165,3 +165,88 @@ html[data-view="agent"] .view-btn[data-view-set="agent"] {
   color: var(--text1);
   background: color-mix(in srgb, var(--text1) 12%, transparent);
 }
+
+/* ------------------------------------------------------------------ */
+/* Responsive — mobile & tablet                                       */
+/* Overrides desktop inline styles via !important. Class hooks:       */
+/*   .page-container   outer padding wrapper                          */
+/*   .section-row      Recommendations + Work (flex row)              */
+/*   .life-grid        Life 4-col tile grid                           */
+/*   .offclock-grid    Off the clock 3-col grid                       */
+/*   .nav-inner        Nav flex container                             */
+/*   .nav-right        Right-side items                               */
+/*   .nav-mobile-hide  Items hidden below 720px                       */
+/* ------------------------------------------------------------------ */
+
+/* Tablet: keep single-row layouts but tighten padding + collapse OffTheClock to 2 cols */
+@media (max-width: 1000px) {
+  .page-container {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+  .nav-inner {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+  .offclock-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 36px !important;
+  }
+}
+
+/* Mobile: full stack */
+@media (max-width: 720px) {
+  .page-container {
+    padding: 40px 16px 0 !important;
+  }
+  .nav-inner {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  .nav-right {
+    gap: 10px !important;
+  }
+  .nav-mobile-hide {
+    display: none !important;
+  }
+
+  /* Stack Recommendations + Work */
+  .section-row {
+    flex-direction: column !important;
+    gap: 48px !important;
+    margin-top: 56px !important;
+  }
+
+  /* Life: 4 cols -> 2 cols */
+  .life-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    column-gap: 20px !important;
+    row-gap: 24px !important;
+  }
+
+  /* Off the clock: single column */
+  .offclock-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  /* Hero typing: smaller so long phrases don't overflow */
+  #hero-type-text {
+    font-size: 26px !important;
+    letter-spacing: -0.02em !important;
+  }
+  #hero-type-cursor {
+    width: 8px !important;
+    height: 20px !important;
+    transform: translateY(3px) !important;
+  }
+  .hero-typing {
+    min-height: 72px !important;
+    margin-bottom: 24px !important;
+  }
+
+  /* Contact headline: smaller, tighter */
+  #contact h2 {
+    font-size: 24px !important;
+  }
+}
