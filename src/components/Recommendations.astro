@@ -9,60 +9,49 @@ import { recommendations } from "../data/recommendations";
   </div>
   <div style="display:flex; flex-direction:column; gap:2px;">
     {
-      recommendations.map((rec, i) => (
-        <div
-          class="rec-card"
-          style={`display:flex; gap:16px; padding:20px 0; border-top:1px solid var(--border-08);${
-            i === recommendations.length - 1
-              ? " border-bottom:1px solid var(--border-08);"
-              : ""
-          }`}
-        >
-          <img
-            src={rec.avatar}
-            style="flex:none; width:40px; height:40px; border-radius:50%; object-fit:cover;"
-            alt=""
-          />
-          <div style="flex:1; min-width:0;">
-            {/* Every quote is clamped to a fixed height; the script below removes
-                the toggle (and the clamp) for quotes that already fit. */}
-            <input type="checkbox" id={`rec-${i}`} class="rec-toggle" hidden />
-            <p class="rec-quote rec-clamp">&ldquo;{rec.quote}&rdquo;</p>
-            <label for={`rec-${i}`} class="rec-more">
-              <span class="more">Read more</span>
-              <span class="less">Show less</span>
-            </label>
-            <div style="font-size:12.5px; color:var(--muted);">
-              <span style="color:var(--text-e4); font-weight:600;">{rec.name}</span>
-              &nbsp;·&nbsp;{" "}
-              {rec.title}
+      recommendations.map((rec, i) => {
+        const hasMore = rec.full.trim() !== rec.short.trim();
+        return (
+          <div
+            class="rec-card"
+            style={`display:flex; gap:16px; padding:20px 0; border-top:1px solid var(--border-08);${
+              i === recommendations.length - 1
+                ? " border-bottom:1px solid var(--border-08);"
+                : ""
+            }`}
+          >
+            <img
+              src={rec.avatar}
+              style="flex:none; width:40px; height:40px; border-radius:50%; object-fit:cover;"
+              alt=""
+            />
+            <div style="flex:1; min-width:0;">
+              {hasMore ? (
+                <>
+                  {/* short shown by default; checkbox reveals full on "Read more" */}
+                  <input type="checkbox" id={`rec-${i}`} class="rec-toggle" hidden />
+                  <p class="rec-quote rec-short">&ldquo;{rec.short}&rdquo;</p>
+                  <p class="rec-quote rec-full">&ldquo;{rec.full}&rdquo;</p>
+                  <label for={`rec-${i}`} class="rec-more">
+                    <span class="more">Read more</span>
+                    <span class="less">Show less</span>
+                  </label>
+                </>
+              ) : (
+                <p class="rec-quote">&ldquo;{rec.short}&rdquo;</p>
+              )}
+              <div style="font-size:12.5px; color:var(--muted);">
+                <span style="color:var(--text-e4); font-weight:600;">{rec.name}</span>
+                &nbsp;·&nbsp;{" "}
+                {rec.title}
+              </div>
             </div>
           </div>
-        </div>
-      ))
+        );
+      })
     }
   </div>
 </div>
-
-<script>
-  // Progressive enhancement: keep the "Read more" toggle only on cards whose
-  // quote actually overflows the clamp. Ones that already fit get unclamped and
-  // lose the toggle. Without JS, every card stays clamped but expandable.
-  const sync = () => {
-    document.querySelectorAll<HTMLElement>(".rec-card").forEach((card) => {
-      const quote = card.querySelector<HTMLElement>(".rec-clamp");
-      const toggle = card.querySelector<HTMLInputElement>(".rec-toggle");
-      const more = card.querySelector<HTMLElement>(".rec-more");
-      if (!quote || !toggle || !more) return;
-      // Measure against the clamped state.
-      const fits =
-        !toggle.checked && quote.scrollHeight <= quote.clientHeight + 1;
-      more.style.display = fits ? "none" : "";
-    });
-  };
-  sync();
-  window.addEventListener("resize", sync);
-</script>
 
 <style>
   .rec-quote {
@@ -72,19 +61,15 @@ import { recommendations } from "../data/recommendations";
     margin-bottom: 10px;
   }
 
-  /* Collapsed: fixed height at 3 lines. */
-  .rec-clamp {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
+  /* full is hidden until the toggle is checked, then it swaps in for short */
+  .rec-full {
+    display: none;
   }
-
-  /* Expanded: show the full quote. */
-  .rec-toggle:checked ~ .rec-clamp {
+  .rec-toggle:checked ~ .rec-full {
     display: block;
-    -webkit-line-clamp: unset;
-    overflow: visible;
+  }
+  .rec-toggle:checked ~ .rec-short {
+    display: none;
   }
 
   .rec-more {
