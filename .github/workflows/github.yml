@@ -31,10 +31,7 @@ jobs:
       - run: npm ci
 
       - name: Regenerate github.yml
-        env:
-          # A fine-grained PAT with read access to your contributions.
-          # Add it as a repo secret named GH_CONTRIB_TOKEN.
-          GITHUB_TOKEN: ${{ secrets.GH_CONTRIB_TOKEN }}
+        # No token needed — uses a public contributions API.
         run: npm run build:github
 
       - name: Commit refreshed github.yml
