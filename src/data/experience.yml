@@ -1,0 +1,120 @@
+# Full experience / CV — sourced from the résumé (public/resume.pdf).
+# Standalone page at /experience; NOT linked from the homepage.
+summary: >-
+  Product-focused software engineer with 8+ years in high-paced startup
+  environments, building and architecting applications with complex data
+  structures and components. Google Code Finalist and a previous startup founder.
+
+roles:
+  - company: "Rime"
+    title: "Senior Engineer"
+    what: "Voice AI"
+    period: "Jun 2025 — Present"
+    logo: "/assets/rime.jpeg"
+    href: "https://rime.ai/"
+    bullets:
+      - "Engineering low-latency Voice AI systems (agent orchestration, multi-model pricing/usage tracking, OOV pipelines, WebSocket streaming), resulting in 10× revenue growth."
+      - "Developed AI agent playbooks that decompose open-ended tasks into deterministic workflows with validation and human-review steps — reducing ACU usage by 50% while improving first-pass code quality by 80%."
+      - "Delivered a sub-200ms SLA across all non-TTS APIs and sub-100ms P99 latency on multiple high-traffic endpoints."
+
+  - company: "Rtzen"
+    title: "Engineering Lead"
+    what: "Financial OS for businesses"
+    period: "Apr 2023 — Jun 2025"
+    logo: "/assets/rtzen.svg"
+    href: "https://www.rtzen.ai/"
+    bullets:
+      - "Drove a 0→1 transformation (also as fractional PM) from AI suggestions to fully autonomous AI actions, delivering ~70% efficiency gains at scale across most clients."
+      - "Built generative-UI capabilities; in the early phase they saw 2–3× more usage than standard chat-based agents."
+      - "Rewrote the data-extraction module to use multiple models on unstructured sources (primarily PDFs), doubling accuracy on hard-to-understand documents."
+
+  - company: "Meter"
+    title: "Engineer (P/T)"
+    what: "Internet as infrastructure"
+    period: "Mar 2023 — Oct 2024"
+    logo: "/assets/meter.jpeg"
+    href: "http://meter.com/"
+    bullets:
+      - "Led a new product offering from a single-page doc and worked as fractional PM (with the founder) building POCs for future expansion."
+      - "Built an internal design system and micro-frontend architecture (alongside a designer who was founding + lead designer at Stripe for 8 years)."
+      - "Backed by founders of OpenAI, Stripe & VMware and execs from Goldman Sachs, Shopify, Adobe, Qualcomm. Used by Perplexity, OpenAI, Cursor and other leading startups."
+
+  - company: "Dyte"
+    note: "acq. Cloudflare"
+    title: "Founding Engineer"
+    what: "SDKs for live experiences"
+    period: "Apr 2021 — Mar 2023"
+    logo: "/assets/dyte.jpeg"
+    href: "https://blog.cloudflare.com/introducing-cloudflare-realtime-and-realtimekit/"
+    bullets:
+      - "Built a multi-platform WebRTC SDK with React Native (showcased at React Conf — running React Native inside Flutter), reaching parity with Twilio & Zoom in ~a month, as the sole mobile-engineering hire."
+      - "Built a library to facilitate multi-threading / pre-loading the JS thread."
+      - "Implemented webinar, group calls, screen sharing, and plugin features across the SDKs."
+
+  - company: "Zepto"
+    note: "unicorn"
+    title: "VP of Product"
+    what: "Quick commerce"
+    period: "Feb 2021 — Mar 2021"
+    logo: "/assets/zepto.jpeg"
+    href: "https://www.zepto.com/"
+    bullets:
+      - "Cut load time from >5s to <2s by trimming API payloads and moving non-essential calls/tasks to the background."
+      - "Fixed most of the state-management code in the React app, resulting in no visible re-renders."
+
+  - company: "Supertokens"
+    title: "Frontend Lead"
+    what: "Open source auth"
+    period: "Jan 2020 — May 2020"
+    logo: "/assets/supertokens.png"
+    href: "https://supertokens.com/"
+    bullets:
+      - "Owned the entire front-end side of the business."
+      - "Revamped frontend pages, reducing bundle size by ~50%."
+      - "Contributed to the platform's open-source frontend SDKs."
+
+  - company: "Liquiron"
+    title: "Software Engineer"
+    what: "Marketing SaaS"
+    period: "Sep 2018 — Jan 2020"
+    bullets:
+      - "Integrated Facebook, Twitter, Google & LinkedIn Marketing APIs into a unified dashboard to publish campaigns across channels."
+      - "Built product SDKs for other frameworks and a multi-tenant payment flow."
+      - "Built plugins/SDKs to embed the product into other platforms."
+
+highlights:
+  - "Last 5 startups: 2 unicorns, 1 acquired by Cloudflare (early engineer)."
+  - "Previously a startup founder — scaled to 50+ locations."
+  - "Google Code Finalist."
+
+education:
+  degree: "Bachelor's in Computer Science"
+  school: "SRM University"
+  period: "2014 — 2018"
+
+skills:
+  - "React"
+  - "Next.js"
+  - "React Native"
+  - "TypeScript"
+  - "Node.js"
+  - "GraphQL"
+  - "tRPC"
+  - "Redux"
+  - "Zustand"
+  - "Postgres"
+  - "Hasura"
+  - "Supabase"
+  - "Firebase"
+  - "GoLang"
+  - "Gin"
+  - "WebRTC"
+  - "WebSockets"
+  - "Micro-frontend architecture"
+  - "Tailwind"
+  - "RAG / AI agents"
+  - "MCP servers & clients"
+  - "Anthropic"
+  - "OpenAI"
+  - "CI/CD"
+  - "Vercel"
