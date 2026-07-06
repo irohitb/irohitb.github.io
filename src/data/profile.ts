@@ -8,6 +8,7 @@ export interface Profile {
   status: string;
   email: string;
   whatsapp: string;
+  calendly: string;
   socials: {
     github: string;
     githubUser: string;
@@ -46,6 +47,7 @@ const FALLBACK: ProfileFile = {
     status: "",
     email: "",
     whatsapp: "#",
+    calendly: "#",
     socials: { github: "#", githubUser: "", x: "#", linkedin: "#", npm: "#" },
     resumeUrl: "#",
   },

@@ -67,6 +67,7 @@ export function buildAgentText(): string {
 
   L.push("## Contact", "");
   L.push(`- Email: ${profile.email}`);
+  L.push(`- Book a call: ${profile.calendly}`);
   L.push(`- WhatsApp: ${profile.whatsapp} (username — search in WhatsApp)`);
   L.push(`- GitHub: ${profile.socials.github}`);
   L.push(`- LinkedIn: ${profile.socials.linkedin}`);
