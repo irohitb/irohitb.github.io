@@ -23,6 +23,7 @@
   --border-07: rgba(255, 255, 255, 0.07);
   --card: rgba(255, 255, 255, 0.05);
   --accent: #d97757;
+  --accent-glow: rgba(217, 119, 87, 0.16);
   --btn-fg: #0a0a0b;
   --node-bg: #141417;
 }
@@ -50,6 +51,7 @@
   --border-07: rgba(0, 0, 0, 0.07);
   --card: rgba(0, 0, 0, 0.03);
   --accent: #c25b38;
+  --accent-glow: rgba(217, 119, 87, 0.12);
   --btn-fg: #fafaf7;
   --node-bg: #ecece6;
 }
