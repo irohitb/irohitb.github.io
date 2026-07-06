@@ -1,12 +1,15 @@
 name: deploy
 
-# Build the Astro site and publish it to GitHub Pages (user site
-# https://irohitb.github.io). Runs on every push to main, on demand, and is
-# also re-triggered when the health/github workflows commit refreshed YAML.
+# Build the Astro site and publish it to GitHub Pages (custom domain
+# rohitbhatia.com). Runs on every push to main, on demand, and hourly on a
+# schedule. The scheduled run regenerates the live data (GitHub contributions)
+# at build time, so the site self-refreshes without any cross-workflow trigger.
 
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: "0 * * * *" # hourly (UTC) — refresh GitHub contributions
   workflow_dispatch:
 
 permissions:
@@ -38,9 +41,10 @@ jobs:
 
       - run: npm ci
 
-      # Build straight from the committed YAML. Data generation lives in the
-      # health/github workflows, so we don't re-run the generators here.
-      - run: npx astro build
+      # `npm run build` regenerates github.yml (token-free public API) + health
+      # (keeps committed values if no export present), then runs astro build —
+      # so every deploy, including the hourly scheduled one, ships fresh data.
+      - run: npm run build
 
       - uses: actions/upload-pages-artifact@v3
         with:
