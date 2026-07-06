@@ -38,8 +38,8 @@ async function main() {
     return;
   }
 
-  const year = new Date().getUTCFullYear();
-  const url = `https://github-contributions-api.jogruber.de/v4/${username}?y=${year}`;
+  // Rolling last 365 days (matches GitHub's own profile contribution graph).
+  const url = `https://github-contributions-api.jogruber.de/v4/${username}?y=last`;
 
   let total;
   try {
@@ -51,7 +51,7 @@ async function main() {
       return;
     }
     const json = await res.json();
-    total = json?.total?.[year] ?? json?.total?.[String(year)];
+    total = json?.total?.lastYear;
   } catch (err) {
     console.warn("[github] fetch failed — keeping existing github.yml:", err);
     return;
@@ -64,13 +64,13 @@ async function main() {
 
   const existing = (await readYaml(OUT_FILE))?.contributions;
   if (existing === total) {
-    console.log(`[github] unchanged (${total} contributions in ${year})`);
+    console.log(`[github] unchanged (${total} contributions, last 365 days)`);
     return;
   }
 
   await writeFile(OUT_FILE, HEADER + stringifyYaml({ contributions: total }));
   console.log(
-    `[github] wrote ${path.relative(ROOT, OUT_FILE)} (${total} in ${year})`,
+    `[github] wrote ${path.relative(ROOT, OUT_FILE)} (${total}, last 365 days)`,
   );
 }
 
