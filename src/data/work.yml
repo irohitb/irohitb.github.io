@@ -14,6 +14,7 @@
   logo: "/assets/rtzen.svg"
   href: "https://www.rtzen.ai/"
 - company: "Meter"
+  note: "unicorn"
   role: "Engineer · Infrastructure"
   does: "Internet as infra"
   year: "'23"

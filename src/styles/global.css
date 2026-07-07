@@ -258,3 +258,9 @@ html[data-view="agent"] .view-btn[data-view-set="agent"] {
     font-size: 24px !important;
   }
 }
+
+/* Press / media link cards on the experience page */
+.press-card:hover {
+  border-color: var(--border-14);
+  background: var(--card);
+}

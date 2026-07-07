@@ -3,6 +3,15 @@
 
 import { loadYaml } from "./_load";
 
+// A press / media link shown under a role (funding announcements, articles,
+// talks), LinkedIn-style with a thumbnail.
+export interface PressLink {
+  title: string;
+  source: string;
+  url: string;
+  thumbnail: string;
+}
+
 export interface ExperienceRole {
   company: string;
   title: string;
@@ -12,6 +21,7 @@ export interface ExperienceRole {
   note?: string;
   logo?: string;
   href?: string;
+  links?: PressLink[];
 }
 
 export interface Education {
