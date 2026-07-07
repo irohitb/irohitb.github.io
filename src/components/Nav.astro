@@ -1,6 +1,12 @@
 ---
 import ThemeToggle from "./ThemeToggle.tsx";
 import { profile } from "../data/profile";
+
+// `subpage` = rendered on a page other than the homepage (e.g. /experience):
+// section links point back to the homepage anchors, and the Human/Agent toggle
+// (homepage-only feature) is hidden.
+const { subpage = false } = Astro.props;
+const base = subpage ? "/" : "";
 ---
 
 <div
@@ -15,15 +21,19 @@ import { profile } from "../data/profile";
       >{profile.name}</span
     >
     <div class="nav-right" style="display:flex; align-items:center; gap:18px;">
-      <a class="nav-link nav-mobile-hide" href="#now" style="font-size:13px; color:var(--text-9);">Now</a>
-      <a class="nav-link nav-mobile-hide" href="#work" style="font-size:13px; color:var(--text-9);">Work</a>
-      <a class="nav-link nav-mobile-hide" href="#life" style="font-size:13px; color:var(--text-9);">Life</a>
-      <a class="nav-link nav-mobile-hide" href="#contact" style="font-size:13px; color:var(--text-9);">Contact</a>
+      <a class="nav-link nav-mobile-hide" href={`${base}#now`} style="font-size:13px; color:var(--text-9);">Now</a>
+      <a class="nav-link nav-mobile-hide" href={`${base}#work`} style="font-size:13px; color:var(--text-9);">Work</a>
+      <a class="nav-link nav-mobile-hide" href={`${base}#life`} style="font-size:13px; color:var(--text-9);">Life</a>
+      <a class="nav-link nav-mobile-hide" href={`${base}#contact`} style="font-size:13px; color:var(--text-9);">Contact</a>
       <div class="nav-mobile-hide" style="width:1px; height:14px; background:var(--border-12);"></div>
-      <div class="view-toggle" role="group" aria-label="View as human or agent">
-        <button type="button" class="view-btn" data-view-set="human">Human</button>
-        <button type="button" class="view-btn" data-view-set="agent">Agent</button>
-      </div>
+      {
+        !subpage && (
+          <div class="view-toggle" role="group" aria-label="View as human or agent">
+            <button type="button" class="view-btn" data-view-set="human">Human</button>
+            <button type="button" class="view-btn" data-view-set="agent">Agent</button>
+          </div>
+        )
+      }
       <ThemeToggle client:load />
       <a
         class="icon-link nav-mobile-hide"

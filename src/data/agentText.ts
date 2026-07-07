@@ -12,6 +12,7 @@ import { getHealth } from "./health";
 import { getContributions } from "./github";
 import { music } from "./music";
 import { blogs, movies } from "./offTheClock";
+import { experience } from "./experience";
 
 export function buildAgentText(): string {
   const site = "https://rohitbhatia.com/";
@@ -23,6 +24,7 @@ export function buildAgentText(): string {
   L.push(`# ${profile.name}`, "");
   L.push(agentBrief.headline, "");
   L.push(agentBrief.message, "");
+  if (experience.summary) L.push(experience.summary, "");
 
   L.push("## Now", "");
   for (const line of heroTyping) L.push(`- ${line}`);
@@ -36,6 +38,18 @@ export function buildAgentText(): string {
     L.push(`- ${w.company}${note} — ${w.role}${does} [${year}]`);
   }
   L.push("");
+
+  if (experience.highlights.length) {
+    L.push("## Highlights", "");
+    for (const h of experience.highlights) L.push(`- ${h}`);
+    L.push("");
+  }
+
+  if (experience.skills.length) {
+    L.push("## Skills", "");
+    L.push(experience.skills.join(", "));
+    L.push("");
+  }
 
   L.push("## Recommendations", "");
   for (const r of recommendations) {
