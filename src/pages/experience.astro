@@ -6,6 +6,15 @@ import { experience } from "../data/experience";
 import { profile } from "../data/profile";
 
 const { roles } = experience;
+
+// Renders **markdown-style bold** in bullets (mirrors the résumé's bolding).
+// Escapes HTML first, then turns **x** into <strong>x</strong>.
+const boldify = (s: string) =>
+  s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
 ---
 
 <Base title="Rohit Bhatia — Experience">
@@ -74,7 +83,7 @@ const { roles } = experience;
                   {r.bullets.map((b) => (
                     <li style="display:flex; gap:10px; font-size:14px; line-height:1.6; color:var(--text-9);">
                       <span style="color:var(--faint); flex:none;">—</span>
-                      <span>{b}</span>
+                      <span set:html={boldify(b)} />
                     </li>
                   ))}
                 </ul>

@@ -38,7 +38,7 @@ roles:
     bullets:
       - "Led a new product offering from a single-page doc and worked as fractional PM (with the founder) building POCs for future expansion."
       - "Built an internal design system and micro-frontend architecture (alongside a designer who was founding + lead designer at Stripe for 8 years)."
-      - "Backed by founders of OpenAI, Stripe & VMware and execs from Goldman Sachs, Shopify, Adobe, Qualcomm. Used by Perplexity, OpenAI, Cursor and other leading startups."
+      - "**Backed by founders of OpenAI, Stripe & VMware** and execs from Goldman Sachs, Shopify, Adobe, Qualcomm. Used by Perplexity, OpenAI, Cursor and other leading startups."
     links:
       - title: "Meter raises $170M Series C (General Catalyst)"
         source: "meter.com"
@@ -53,7 +53,7 @@ roles:
     logo: "/assets/dyte.jpeg"
     href: "https://blog.cloudflare.com/introducing-cloudflare-realtime-and-realtimekit/"
     bullets:
-      - "Built a multi-platform WebRTC SDK with React Native (showcased at React Conf — running React Native inside Flutter), reaching parity with Twilio & Zoom in ~a month, as the sole mobile-engineering hire."
+      - "Built a multi-platform WebRTC SDK with React Native (showcased at React Conf — running React Native inside Flutter), reaching parity with Twilio & Zoom in ~a month, **as the sole mobile-engineering hire**."
       - "Built a library to facilitate multi-threading / pre-loading the JS thread."
       - "Implemented webinar, group calls, screen sharing, and plugin features across the SDKs."
     links:
@@ -94,8 +94,13 @@ roles:
     href: "https://supertokens.com/"
     bullets:
       - "Owned the entire front-end side of the business."
-      - "Revamped frontend pages, reducing bundle size by ~50%."
+      - "Revamped frontend pages, **reducing bundle size by ~50%**."
       - "Contributed to the platform's open-source frontend SDKs."
+    links:
+      - title: "SuperTokens — open-source auth"
+        source: "github.com"
+        url: "https://github.com/supertokens"
+        thumbnail: "/assets/supertokens.png"
 
   - company: "Liquiron"
     title: "Software Engineer"
@@ -103,7 +108,7 @@ roles:
     period: "Sep 2018 — Jan 2020"
     bullets:
       - "Integrated Facebook, Twitter, Google & LinkedIn Marketing APIs into a unified dashboard to publish campaigns across channels."
-      - "Built product SDKs for other frameworks and a multi-tenant payment flow."
+      - "Built product SDKs for other frameworks and **a multi-tenant payment flow**."
       - "Built plugins/SDKs to embed the product into other platforms."
 
 highlights:

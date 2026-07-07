@@ -26,14 +26,10 @@ const base = subpage ? "/" : "";
       <a class="nav-link nav-mobile-hide" href={`${base}#life`} style="font-size:13px; color:var(--text-9);">Life</a>
       <a class="nav-link nav-mobile-hide" href={`${base}#contact`} style="font-size:13px; color:var(--text-9);">Contact</a>
       <div class="nav-mobile-hide" style="width:1px; height:14px; background:var(--border-12);"></div>
-      {
-        !subpage && (
-          <div class="view-toggle" role="group" aria-label="View as human or agent">
-            <button type="button" class="view-btn" data-view-set="human">Human</button>
-            <button type="button" class="view-btn" data-view-set="agent">Agent</button>
-          </div>
-        )
-      }
+      <div class="view-toggle" role="group" aria-label="View as human or agent">
+        <button type="button" class="view-btn" data-view-set="human">Human</button>
+        <button type="button" class="view-btn" data-view-set="agent">Agent</button>
+      </div>
       <ThemeToggle client:load />
       <a
         class="icon-link nav-mobile-hide"
@@ -83,5 +79,11 @@ const base = subpage ? "/" : "";
     try {
       localStorage.setItem("view", v);
     } catch (err) {}
+    // The agent view lives on the homepage. On any other page, navigate home so
+    // the choice takes effect (Base reads the persisted view on load).
+    if (location.pathname !== "/") {
+      e.preventDefault();
+      location.href = "/";
+    }
   });
 </script>
