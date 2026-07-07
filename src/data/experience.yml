@@ -16,6 +16,11 @@ roles:
       - "Engineering low-latency Voice AI systems (agent orchestration, multi-model pricing/usage tracking, OOV pipelines, WebSocket streaming), resulting in 10× revenue growth."
       - "Developed AI agent playbooks that decompose open-ended tasks into deterministic workflows with validation and human-review steps — reducing ACU usage by 50% while improving first-pass code quality by 80%."
       - "Delivered a sub-200ms SLA across all non-TTS APIs and sub-100ms P99 latency on multiple high-traffic endpoints."
+    links:
+      - title: "Rime raises its seed round"
+        source: "rime.ai"
+        url: "https://rime.ai/resources/seed"
+        thumbnail: "/assets/press/rime-seed.png"
 
   - company: "Rtzen"
     title: "Engineering Lead"
