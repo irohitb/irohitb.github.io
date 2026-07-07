@@ -1,0 +1,73 @@
+---
+// Plain-text / markdown agent view for the /experience page. Its own agent
+// content (the full CV as text), separate from the homepage agent view.
+import { experience } from "../data/experience";
+import { profile } from "../data/profile";
+
+const { summary, roles, highlights, education, skills } = experience;
+const strip = (s: string) => s.replace(/\*\*(.+?)\*\*/g, "$1");
+---
+
+<div class="agent-doc agent-only">
+  <div class="agent-switch">
+    <button type="button" data-view-set="human">human</button>
+    <span>·</span>
+    <button type="button" data-view-set="agent">agent</button>
+  </div>
+
+  <h1># {profile.name} — Experience</h1>
+  <p class="lead">{summary}</p>
+
+  {
+    roles.map((r) => (
+      <>
+        <h2>
+          ## {r.company}
+          {r.note ? ` (${r.note})` : ""} — {r.title}
+        </h2>
+        <p class="meta">
+          {r.what} · {r.period}
+        </p>
+        <ul>
+          {r.bullets.map((b) => (
+            <li>{strip(b)}</li>
+          ))}
+        </ul>
+        {r.links && r.links.length > 0 && (
+          <ul>
+            {r.links.map((l) => (
+              <li>
+                <a href={l.url} target="_blank" rel="noopener">
+                  {l.title}
+                </a>{" "}
+                ({l.source})
+              </li>
+            ))}
+          </ul>
+        )}
+      </>
+    ))
+  }
+
+  <h2>## Highlights</h2>
+  <ul>
+    {highlights.map((h) => <li>{h}</li>)}
+  </ul>
+
+  <h2>## Education</h2>
+  <ul>
+    <li>{education.school} — {education.degree} [{education.period}]</li>
+  </ul>
+
+  <h2>## Skills</h2>
+  <p>{skills.join(", ")}</p>
+
+  <h2>## Contact</h2>
+  <ul>
+    <li>Email: <a href={`mailto:${profile.email}`}>{profile.email}</a></li>
+    <li>Book a call: <a href={profile.calendly} target="_blank" rel="noopener">{profile.calendly}</a></li>
+    <li>GitHub: <a href={profile.socials.github} target="_blank" rel="noopener">{profile.socials.github}</a></li>
+    <li>LinkedIn: <a href={profile.socials.linkedin} target="_blank" rel="noopener">{profile.socials.linkedin}</a></li>
+    <li>Résumé: <a href={profile.resumeUrl} target="_blank" rel="noopener">{profile.resumeUrl}</a></li>
+  </ul>
+</div>

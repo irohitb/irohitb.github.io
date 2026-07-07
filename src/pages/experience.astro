@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import Background from "../components/Background.astro";
 import Nav from "../components/Nav.astro";
+import ExperienceAgentView from "../components/ExperienceAgentView.astro";
 import { experience } from "../data/experience";
 import { profile } from "../data/profile";
 
@@ -18,7 +19,7 @@ const boldify = (s: string) =>
 ---
 
 <Base title="Rohit Bhatia — Experience">
-  <div style="position:relative; min-height:100vh;">
+  <div class="human-only" style="position:relative; min-height:100vh;">
     <Background />
     <Nav subpage />
 
@@ -108,4 +109,6 @@ const boldify = (s: string) =>
       </div>
     </div>
   </div>
+
+  <ExperienceAgentView />
 </Base>

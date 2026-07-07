@@ -313,3 +313,110 @@ html[data-view="agent"] .view-btn[data-view-set="agent"] {
     grid-template-columns: 1fr;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Agent view — plain markdown text (shared by homepage + /experience) */
+/* ------------------------------------------------------------------ */
+.agent-doc {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text-9);
+  font:
+    14px/1.7 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    monospace;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 36px 24px 90px;
+}
+.agent-switch {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 34px;
+  color: var(--faint);
+}
+.agent-switch button {
+  font: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  color: var(--muted);
+}
+html[data-view="agent"] .agent-switch button[data-view-set="agent"],
+html[data-view="human"] .agent-switch button[data-view-set="human"] {
+  color: var(--text1);
+}
+/* Only headings carry colour — everything else is plain text. */
+.agent-doc h1 {
+  color: var(--accent);
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+.agent-doc h2 {
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 700;
+  margin: 34px 0 10px;
+}
+.agent-doc p {
+  margin: 0 0 12px;
+}
+.agent-doc .lead {
+  color: var(--text1);
+}
+.agent-doc .meta,
+.agent-doc .cite {
+  color: var(--muted);
+}
+.agent-doc ul {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+}
+.agent-doc li {
+  margin: 0 0 4px;
+}
+.agent-doc li::before {
+  content: "- ";
+  color: var(--faint);
+}
+.agent-doc a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Streaming-style reveal when switching to Agent: each block fades up in
+   sequence (like the doc is being generated). */
+@keyframes agentReveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+html[data-view="agent"] .agent-doc > * {
+  animation: agentReveal 0.5s cubic-bezier(0.2, 0.65, 0.25, 1) both;
+}
+html[data-view="agent"] .agent-doc > *:nth-child(1) { animation-delay: 0.02s; }
+html[data-view="agent"] .agent-doc > *:nth-child(2) { animation-delay: 0.08s; }
+html[data-view="agent"] .agent-doc > *:nth-child(3) { animation-delay: 0.14s; }
+html[data-view="agent"] .agent-doc > *:nth-child(4) { animation-delay: 0.2s; }
+html[data-view="agent"] .agent-doc > *:nth-child(5) { animation-delay: 0.26s; }
+html[data-view="agent"] .agent-doc > *:nth-child(6) { animation-delay: 0.32s; }
+html[data-view="agent"] .agent-doc > *:nth-child(7) { animation-delay: 0.38s; }
+html[data-view="agent"] .agent-doc > *:nth-child(8) { animation-delay: 0.44s; }
+html[data-view="agent"] .agent-doc > *:nth-child(9) { animation-delay: 0.5s; }
+html[data-view="agent"] .agent-doc > *:nth-child(n + 10) { animation-delay: 0.56s; }
+@media (prefers-reduced-motion: reduce) {
+  html[data-view="agent"] .agent-doc > * {
+    animation: none;
+  }
+}

@@ -72,11 +72,5 @@ const base = subpage ? "/" : "";
     try {
       localStorage.setItem("view", v);
     } catch (err) {}
-    // The agent view lives on the homepage. On any other page, navigate home so
-    // the choice takes effect (Base reads the persisted view on load).
-    if (location.pathname !== "/") {
-      e.preventDefault();
-      location.href = "/";
-    }
   });
 </script>
