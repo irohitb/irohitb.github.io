@@ -424,12 +424,21 @@ html[data-view="agent"] .agent-doc > *:nth-child(n + 10) { animation-delay: 0.56
 /* ------------------------------------------------------------------ */
 /* Interactivity affordances                                          */
 /* ------------------------------------------------------------------ */
-/* Everything clickable shows the pointer cursor on hover. */
+/* Everything clickable shows a distinct custom "click" cursor on hover — a
+   small ring (dual-stroke so it's visible on any background). Falls back to the
+   normal pointer hand if data-URI cursors aren't supported. */
 a,
 button,
 label[for],
-[role="button"] {
-  cursor: pointer;
+[role="button"],
+.rec-more,
+.press-card,
+.view-btn,
+.agent-switch button {
+  cursor:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Ccircle cx='12' cy='12' r='7' fill='none' stroke='%23000' stroke-width='3.5' opacity='0.4'/%3E%3Ccircle cx='12' cy='12' r='7' fill='none' stroke='%23fff' stroke-width='1.6'/%3E%3Ccircle cx='12' cy='12' r='1.6' fill='%23fff'/%3E%3C/svg%3E")
+      12 12,
+    pointer;
 }
 
 /* Nav name -> home: subtle brighten on hover. */
