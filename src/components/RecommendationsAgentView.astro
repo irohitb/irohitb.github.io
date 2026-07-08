@@ -1,6 +1,7 @@
 ---
 // Plain-text / markdown agent view for the /recommendations page.
 import { recommendations } from "../data/recommendations";
+import { endorsements } from "../data/endorsements";
 import { profile } from "../data/profile";
 ---
 
@@ -28,6 +29,18 @@ import { profile } from "../data/profile";
       </>
     ))
   }
+
+  <h2>## Endorsements</h2>
+  <ul>
+    {
+      endorsements.map((e) => (
+        <li>
+          {e.name} — {e.title}
+          {e.relationship ? ` (${e.relationship})` : ""}
+        </li>
+      ))
+    }
+  </ul>
 
   <h2>## Contact</h2>
   <ul>
