@@ -33,11 +33,7 @@ const initials = (name: string) =>
         return (
           <div
             class="rec-card"
-            style={`display:flex; gap:16px; padding:20px 0; border-top:1px solid var(--border-08);${
-              i === featured.length - 1
-                ? " border-bottom:1px solid var(--border-08);"
-                : ""
-            }`}
+            style="display:flex; gap:16px; padding:20px 0; border-top:1px solid var(--border-08);"
           >
             {rec.avatar ? (
               <img
