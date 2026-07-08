@@ -1,5 +1,15 @@
 ---
 import { recommendations } from "../data/recommendations";
+
+// Homepage shows the first few; the full list lives on /recommendations.
+const featured = recommendations.slice(0, 3);
+const initials = (name: string) =>
+  name
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join("")
+    .toUpperCase();
 ---
 
 <div style="flex:1.25; min-width:0;">
@@ -9,22 +19,31 @@ import { recommendations } from "../data/recommendations";
   </div>
   <div style="display:flex; flex-direction:column; gap:2px;">
     {
-      recommendations.map((rec, i) => {
+      featured.map((rec, i) => {
         const hasMore = rec.full.trim() !== rec.short.trim();
         return (
           <div
             class="rec-card"
             style={`display:flex; gap:16px; padding:20px 0; border-top:1px solid var(--border-08);${
-              i === recommendations.length - 1
+              i === featured.length - 1
                 ? " border-bottom:1px solid var(--border-08);"
                 : ""
             }`}
           >
-            <img
-              src={rec.avatar}
-              style="flex:none; width:40px; height:40px; border-radius:50%; object-fit:cover;"
-              alt=""
-            />
+            {rec.avatar ? (
+              <img
+                src={rec.avatar}
+                style="flex:none; width:40px; height:40px; border-radius:50%; object-fit:cover;"
+                alt=""
+              />
+            ) : (
+              <span
+                style="flex:none; width:40px; height:40px; border-radius:50%; border:1px solid var(--border-12); background:var(--node-bg); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600; color:var(--muted2);"
+                aria-hidden="true"
+              >
+                {initials(rec.name)}
+              </span>
+            )}
             <div style="flex:1; min-width:0;">
               {hasMore ? (
                 <>
@@ -51,6 +70,13 @@ import { recommendations } from "../data/recommendations";
       })
     }
   </div>
+
+  <a
+    href="/recommendations"
+    class="page-link"
+    style="margin-top:16px; font-size:13px; font-weight:500; color:var(--text-9);"
+    >View all recommendations &rarr;</a
+  >
 </div>
 
 <style>

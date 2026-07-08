@@ -1,0 +1,37 @@
+---
+// Plain-text / markdown agent view for the /recommendations page.
+import { recommendations } from "../data/recommendations";
+import { profile } from "../data/profile";
+---
+
+<div class="agent-doc agent-only">
+  <div class="agent-switch">
+    <button type="button" data-view-set="human">human</button>
+    <span>·</span>
+    <button type="button" data-view-set="agent">agent</button>
+  </div>
+
+  <h1># {profile.name} — Recommendations</h1>
+  <p class="lead">
+    LinkedIn recommendations from mentors, managers, and clients.
+  </p>
+
+  {
+    recommendations.map((r) => (
+      <>
+        <h2>## {r.name}</h2>
+        <p class="meta">
+          {r.title}
+          {r.relationship ? ` — ${r.relationship}` : ""}
+        </p>
+        <blockquote>{r.full}</blockquote>
+      </>
+    ))
+  }
+
+  <h2>## Contact</h2>
+  <ul>
+    <li>LinkedIn: <a href={profile.socials.linkedin} target="_blank" rel="noopener">{profile.socials.linkedin}</a></li>
+    <li>Email: <a href={`mailto:${profile.email}`}>{profile.email}</a></li>
+  </ul>
+</div>
