@@ -37,7 +37,13 @@ const initials = (name: string) =>
             >recommendations</span
           ><span style="color:var(--faint);">&gt;</span>
         </div>
-        <span style="font-size:11.5px; color:var(--muted);">{recommendations.length} on LinkedIn</span>
+        <a
+          href="https://www.linkedin.com/in/irbhatia/details/recommendations"
+          target="_blank"
+          rel="noopener"
+          style="font-size:11.5px; color:var(--muted); text-decoration:underline; text-underline-offset:2px; white-space:nowrap;"
+          >{recommendations.length} on LinkedIn &nearr;</a
+        >
       </div>
 
       <div style="display:flex; flex-direction:column; gap:28px;">
