@@ -52,41 +52,54 @@ const initials = (name: string) =>
 
           <div style="display:flex; flex-direction:column; gap:28px;">
             {
-              recommendations.map((r) => (
-                <div style="display:flex; gap:16px;">
-                  {r.avatar ? (
-                    <img
-                      src={r.avatar}
-                      alt=""
-                      style="flex:none; width:44px; height:44px; border-radius:50%; object-fit:cover; margin-top:2px;"
-                    />
-                  ) : (
-                    <span
-                      style="flex:none; width:44px; height:44px; border-radius:50%; border:1px solid var(--border-12); background:var(--node-bg); display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:600; color:var(--muted2); margin-top:2px;"
-                      aria-hidden="true"
-                    >
-                      {initials(r.name)}
-                    </span>
-                  )}
-
-                  <div style="flex:1; min-width:0;">
-                    <div style="font-size:15px; font-weight:600; color:var(--text-e4);">
-                      {r.name}
-                    </div>
-                    <div style="font-size:12.5px; color:var(--muted2); margin:1px 0 3px;">
-                      {r.title}
-                    </div>
-                    {r.relationship && (
-                      <div style="font-family:'Geist Mono',monospace; font-size:11px; color:var(--muted); margin-bottom:12px;">
-                        {r.relationship}
-                      </div>
+              recommendations.map((r, i) => {
+                const hasMore = r.full.trim() !== r.short.trim();
+                return (
+                  <div style="display:flex; gap:16px;">
+                    {r.avatar ? (
+                      <img
+                        src={r.avatar}
+                        alt=""
+                        style="flex:none; width:44px; height:44px; border-radius:50%; object-fit:cover; margin-top:2px;"
+                      />
+                    ) : (
+                      <span
+                        style="flex:none; width:44px; height:44px; border-radius:50%; border:1px solid var(--border-12); background:var(--node-bg); display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:600; color:var(--muted2); margin-top:2px;"
+                        aria-hidden="true"
+                      >
+                        {initials(r.name)}
+                      </span>
                     )}
-                    <p style="font-size:14.5px; line-height:1.7; color:var(--text-c8); margin:0;">
-                      &ldquo;{r.full}&rdquo;
-                    </p>
+
+                    <div style="flex:1; min-width:0;">
+                      <div style="font-size:15px; font-weight:600; color:var(--text-e4);">
+                        {r.name}
+                      </div>
+                      <div style="font-size:12.5px; color:var(--muted2); margin:1px 0 3px;">
+                        {r.title}
+                      </div>
+                      {r.relationship && (
+                        <div style="font-family:'Geist Mono',monospace; font-size:11px; color:var(--muted); margin-bottom:12px;">
+                          {r.relationship}
+                        </div>
+                      )}
+                      {hasMore ? (
+                        <>
+                          <input type="checkbox" id={`rec-${i}`} class="rec-toggle" hidden />
+                          <p class="rec-quote rec-short">&ldquo;{r.short}&rdquo;</p>
+                          <p class="rec-quote rec-full">&ldquo;{r.full}&rdquo;</p>
+                          <label for={`rec-${i}`} class="rec-more">
+                            <span class="more">Read more</span>
+                            <span class="less">Show less</span>
+                          </label>
+                        </>
+                      ) : (
+                        <p class="rec-quote">&ldquo;{r.short}&rdquo;</p>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))
+                );
+              })
             }
           </div>
         </section>
@@ -155,5 +168,40 @@ const initials = (name: string) =>
       grid-template-columns: 1fr;
       gap: 48px;
     }
+  }
+
+  /* "Read more" toggle — short is shown by default; the checkbox swaps in full. */
+  .rec-quote {
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--text-c8);
+    margin: 0 0 10px;
+  }
+  .rec-full {
+    display: none;
+  }
+  .rec-toggle:checked ~ .rec-full {
+    display: block;
+  }
+  .rec-toggle:checked ~ .rec-short {
+    display: none;
+  }
+  .rec-more {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-9);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    user-select: none;
+  }
+  .rec-more .less {
+    display: none;
+  }
+  .rec-toggle:checked ~ .rec-more .more {
+    display: none;
+  }
+  .rec-toggle:checked ~ .rec-more .less {
+    display: inline;
   }
 </style>
