@@ -40,3 +40,8 @@
   year: "'20"
   logo: "/assets/supertokens.png"
   href: "https://supertokens.com/"
+- company: "Liquiron"
+  role: "Software Engineer"
+  does: "Marketing SaaS"
+  year: "'18"
+  href: ""

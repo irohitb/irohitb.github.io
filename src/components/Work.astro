@@ -14,7 +14,7 @@ import { work } from "../data/work";
     <div style="position:absolute; left:16px; top:24px; bottom:24px; width:1px; background:var(--border-12);"></div>
     {
       work.map((job) => (
-        <a href={job.href} target="_blank" rel="noopener" style="position:relative; display:flex; align-items:center; gap:14px; padding:12px 0;">
+        <a href={job.href || undefined} target={job.href ? "_blank" : undefined} rel="noopener" style="position:relative; display:flex; align-items:center; gap:14px; padding:12px 0;">
           <span style="position:relative; z-index:1; flex:none; width:32px; height:32px; border-radius:8px; border:1px solid var(--border-12); background:var(--node-bg); display:flex; align-items:center; justify-content:center; overflow:hidden;">
             {job.logo ? (
               <img src={job.logo} style="width:16px;height:16px;object-fit:contain;" alt="" />
