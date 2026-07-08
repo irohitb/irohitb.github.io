@@ -26,14 +26,14 @@ const initials = (name: string) =>
       >LinkedIn &nearr;</a
     >
   </div>
-  <div style="display:flex; flex-direction:column; gap:2px;">
+  <div style="display:flex; flex-direction:column; gap:28px;">
     {
       featured.map((rec, i) => {
         const hasMore = rec.full.trim() !== rec.short.trim();
         return (
           <div
             class="rec-card"
-            style="display:flex; gap:16px; padding:20px 0; border-top:1px solid var(--border-08);"
+            style="display:flex; gap:16px;"
           >
             {rec.avatar ? (
               <img
