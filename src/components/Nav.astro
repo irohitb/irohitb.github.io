@@ -1,10 +1,6 @@
 ---
 import ThemeToggle from "./ThemeToggle.tsx";
 import { profile } from "../data/profile";
-
-// `subpage` = rendered on a page other than the homepage (e.g. /experience):
-// shows a back-to-home icon.
-const { subpage = false } = Astro.props;
 ---
 
 <div
@@ -15,20 +11,6 @@ const { subpage = false } = Astro.props;
     style="max-width:1260px; margin:0 auto; padding:0 40px; display:flex; align-items:center; justify-content:space-between; height:56px;"
   >
     <div style="display:flex; align-items:center; gap:12px;">
-      {
-        subpage && (
-          <a
-            href="/"
-            aria-label="Back to home"
-            class="icon-link"
-            style="display:flex; align-items:center; justify-content:center; width:30px; height:30px; border:1px solid var(--border-12); border-radius:7px; color:var(--text-9);"
-          >
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M19 12H5M12 19l-7-7 7-7" />
-            </svg>
-          </a>
-        )
-      }
       <a
         href="/"
         class="home-link"
