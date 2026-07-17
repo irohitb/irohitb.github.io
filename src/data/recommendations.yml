@@ -1,6 +1,11 @@
 # LinkedIn recommendations — hand-edited (no API).
 # `short` is shown by default; `full` is revealed on "Read more".
 # `avatar` is optional — an initials circle is shown when it's missing.
+- name: "Ares"
+  title: "Founder & CEO, Rime ($24M Series A)"
+  relationship: "Ares is Rohit's founder at Rime"
+  short: "Rohit came in at a crucial moment when Rime needed reliability, and he executed and helped us up our game. A true swiss army knife — would highly recommend working with him."
+  full: "Rohit came in at a crucial moment when Rime needed reliability, and he executed and helped us up our game. Proficient across all parts of the stack, he's a true swiss army knife, excellent with AI coding workflows, and can grind! Would highly recommend working with Rohit."
 - avatar: "/assets/anand.jpeg"
   name: "Anand Chowdhary"
   title: "Head of Product & Founding Team @ Sycamore ($65M seed) · Previously built & sold FirstQuadrant (Y Combinator S21)"

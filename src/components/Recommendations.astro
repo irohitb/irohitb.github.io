@@ -52,14 +52,17 @@ const initials = (name: string) =>
             <div style="flex:1; min-width:0;">
               {hasMore ? (
                 <>
-                  {/* short shown by default; checkbox reveals full on "Read more" */}
+                  {/* short shown by default; checkbox reveals full. "Read more"
+                      flows inline at the end of the quote to save space. */}
                   <input type="checkbox" id={`rec-${i}`} class="rec-toggle" hidden />
-                  <p class="rec-quote rec-short">&ldquo;{rec.short}&rdquo;</p>
-                  <p class="rec-quote rec-full">&ldquo;{rec.full}&rdquo;</p>
-                  <label for={`rec-${i}`} class="rec-more">
-                    <span class="more">Read more</span>
-                    <span class="less">Show less</span>
-                  </label>
+                  <p class="rec-quote rec-short">
+                    &ldquo;{rec.short}&rdquo;{" "}
+                    <label for={`rec-${i}`} class="rec-more">Read more</label>
+                  </p>
+                  <p class="rec-quote rec-full">
+                    &ldquo;{rec.full}&rdquo;{" "}
+                    <label for={`rec-${i}`} class="rec-more">Show less</label>
+                  </p>
                 </>
               ) : (
                 <p class="rec-quote">&ldquo;{rec.short}&rdquo;</p>
@@ -103,24 +106,15 @@ const initials = (name: string) =>
     display: none;
   }
 
+  /* "Read more" / "Show less" flow inline at the end of the quote. */
   .rec-more {
-    display: inline-block;
-    margin-bottom: 10px;
-    font-size: 13px;
+    display: inline;
+    white-space: nowrap;
     font-weight: 500;
     color: var(--text-9);
     text-decoration: underline;
     text-underline-offset: 2px;
+    cursor: pointer;
     user-select: none;
-  }
-
-  .rec-more .less {
-    display: none;
-  }
-  .rec-toggle:checked ~ .rec-more .more {
-    display: none;
-  }
-  .rec-toggle:checked ~ .rec-more .less {
-    display: inline;
   }
 </style>
