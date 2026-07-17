@@ -106,10 +106,11 @@ const initials = (name: string) =>
     display: none;
   }
 
-  /* "Read more" / "Show less" flow inline at the end of the quote. */
+  /* "Read more" / "Show less" on its own line below the quote. */
   .rec-more {
-    display: inline;
-    white-space: nowrap;
+    display: block;
+    margin-top: 8px;
+    width: fit-content;
     font-weight: 500;
     color: var(--text-9);
     text-decoration: underline;
