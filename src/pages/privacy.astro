@@ -1,0 +1,139 @@
+---
+import Base from "../layouts/Base.astro";
+import Background from "../components/Background.astro";
+import Nav from "../components/Nav.astro";
+import { profile } from "../data/profile";
+
+const updated = "October 6, 2026";
+---
+
+<Base title="Rohit Bhatia — Privacy Policy">
+  <div style="position:relative; min-height:100vh;">
+    <Background />
+    <Nav subpage />
+
+    <div class="legal" style="position:relative; z-index:1;">
+      <a href="/" class="page-link" style="font-size:13px; color:var(--muted);">&larr; Back</a>
+
+      <div style="font-family:'Geist Mono',monospace; font-size:15px; margin:28px 0 8px;">
+        <span style="color:var(--faint);">&lt;/</span><span style="color:var(--accent);"
+          >privacy</span
+        ><span style="color:var(--faint);">&gt;</span>
+      </div>
+      <p class="stamp">Last updated {updated}</p>
+
+      <h2>The short version</h2>
+      <p>
+        This is a static personal site. There are no analytics, no tracking pixels, no advertising,
+        and no cookies set by me. I don&rsquo;t know who you are, and I&rsquo;d rather keep it that
+        way.
+      </p>
+
+      <h2>What stays in your browser</h2>
+      <p>
+        Two preferences are saved in <code>localStorage</code> &mdash; your light/dark theme and
+        whether you&rsquo;re reading the human or agent view. They exist so the site doesn&rsquo;t
+        flash the wrong thing on your next visit. They never leave your device and never reach me.
+        Clearing site data removes them.
+      </p>
+
+      <h2>What third parties see</h2>
+      <p>
+        A static site still involves other people&rsquo;s servers, and those servers see your IP
+        address and user agent in the ordinary course of serving a request:
+      </p>
+      <p>
+        <strong>GitHub Pages</strong> hosts the site, so GitHub handles every request and keeps its
+        own server logs. <strong>Google Fonts</strong> serves the two typefaces, so Google sees a
+        request from your browser for those font files. If you follow the scheduling link,
+        <strong>Calendly</strong> collects whatever you type into its form under its own policy
+        &mdash; I only receive the resulting booking. Links to GitHub, LinkedIn, X, and npm hand you
+        off to those sites entirely.
+      </p>
+      <p>I have no access to any of those logs beyond what those services show me.</p>
+
+      <h2>If you email me</h2>
+      <p>
+        Your message and address land in my inbox and stay there as long as the thread is useful to
+        me. I use it to reply to you and nothing else: no list, no newsletter, no passing it on,
+        no selling it. Ask me to delete a thread and I will.
+      </p>
+
+      <h2>Data I publish about myself</h2>
+      <p>
+        Some pages show my own activity &mdash; listening history, movement and health summaries,
+        public repository activity. That is my data, published deliberately, and sometimes it&rsquo;s
+        a snapshot baked in at build time rather than a live feed. It says nothing about you.
+      </p>
+
+      <h2>Children</h2>
+      <p>
+        The site isn&rsquo;t aimed at children and collects nothing from anyone, so there is nothing
+        here to collect from a child either.
+      </p>
+
+      <h2>Your rights</h2>
+      <p>
+        Depending on where you live you may have the right to see, correct, or delete personal data
+        someone holds about you. In my case the honest answer is usually that I hold nothing but an
+        email thread. Email me and I&rsquo;ll tell you exactly what I have and remove it if you want
+        it gone.
+      </p>
+
+      <h2>Changes</h2>
+      <p>
+        If this changes, the date at the top changes with it. There is no version history beyond
+        that date and the site&rsquo;s own git log.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        <a href={`mailto:${profile.email}`}>{profile.email}</a>
+      </p>
+
+      <p class="stamp" style="margin-top:40px;">
+        See also the <a href="/terms">terms of service</a>.
+      </p>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .legal {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+  .legal h2 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-e4);
+    margin: 36px 0 10px;
+    letter-spacing: -0.01em;
+  }
+  .legal p {
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--text-c8);
+    margin: 0 0 12px;
+  }
+  .legal code {
+    font-family: "Geist Mono", monospace;
+    font-size: 13px;
+    color: var(--text-e4);
+  }
+  .legal strong {
+    color: var(--text-e4);
+    font-weight: 600;
+  }
+  .legal .stamp {
+    font-family: "Geist Mono", monospace;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .legal a:not(.page-link) {
+    color: var(--text-9);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+</style>

@@ -1,0 +1,135 @@
+---
+import Base from "../layouts/Base.astro";
+import Background from "../components/Background.astro";
+import Nav from "../components/Nav.astro";
+import { profile } from "../data/profile";
+
+const updated = "October 6, 2026";
+---
+
+<Base title="Rohit Bhatia — Terms of Service">
+  <div style="position:relative; min-height:100vh;">
+    <Background />
+    <Nav subpage />
+
+    <div class="legal" style="position:relative; z-index:1;">
+      <a href="/" class="page-link" style="font-size:13px; color:var(--muted);">&larr; Back</a>
+
+      <div style="font-family:'Geist Mono',monospace; font-size:15px; margin:28px 0 8px;">
+        <span style="color:var(--faint);">&lt;/</span><span style="color:var(--accent);"
+          >terms</span
+        ><span style="color:var(--faint);">&gt;</span>
+      </div>
+      <p class="stamp">Last updated {updated}</p>
+
+      <h2>1. What this site is</h2>
+      <p>
+        This is {profile.name}&rsquo;s personal website &mdash; a r&eacute;sum&eacute;, some notes
+        about what I&rsquo;m working on, and a few things I&rsquo;ve built. It is not a product, a
+        service, or a company. By browsing it you agree to the terms below. If you don&rsquo;t agree
+        with them, the fix is simple: close the tab.
+      </p>
+
+      <h2>2. No account, no payment</h2>
+      <p>
+        There is nothing to sign up for and nothing to buy. If a page ever asks you for a password
+        or a card number, it isn&rsquo;t mine &mdash; don&rsquo;t type anything in.
+      </p>
+
+      <h2>3. The content is my opinion, as of the day I wrote it</h2>
+      <p>
+        Everything here is written in a personal capacity. It is not the position of any employer,
+        past or present. I write things down when they&rsquo;re true and I don&rsquo;t always go
+        back and update them, so treat anything undated as possibly stale. None of it is
+        professional, legal, or financial advice.
+      </p>
+
+      <h2>4. Use it, but don&rsquo;t pass it off as yours</h2>
+      <p>
+        Read it, quote it, link to it, send it to a friend. If you quote more than a line or two,
+        credit me and link back. What you shouldn&rsquo;t do: republish whole pages as your own,
+        use my name or writing to imply I endorse something I don&rsquo;t, or feed the content into
+        something that presents it as its own work. Code I publish is governed by whatever license
+        ships with that repository, not by this page.
+      </p>
+
+      <h2>5. Automated access</h2>
+      <p>
+        Crawlers and agents are welcome &mdash; there&rsquo;s a <a href="/llms.txt">/llms.txt</a> and
+        an agent-facing view precisely because I expect them. Please keep requests to a sane rate,
+        identify yourself honestly in your user agent, and don&rsquo;t try to get at anything that
+        isn&rsquo;t being served publicly. Scraping with intent to impersonate me is not welcome.
+      </p>
+
+      <h2>6. Links out</h2>
+      <p>
+        I link to GitHub, LinkedIn, a scheduling page, and other people&rsquo;s work. Once you
+        follow a link you&rsquo;re on someone else&rsquo;s site under someone else&rsquo;s rules,
+        and I have no control over what you find there.
+      </p>
+
+      <h2>7. Getting in touch is not a contract</h2>
+      <p>
+        Booking time on my calendar or emailing me starts a conversation, nothing more. No
+        employment relationship, engagement, or obligation on either side comes out of it. If you
+        send me an unsolicited idea, I can&rsquo;t promise to keep it confidential &mdash; so
+        don&rsquo;t send me anything you&rsquo;d be upset to see independently.
+      </p>
+
+      <h2>8. No warranty, no liability</h2>
+      <p>
+        The site is provided as-is. I don&rsquo;t promise it will be up, correct, or free of
+        mistakes, and I&rsquo;m not liable for anything that follows from your using it or relying
+        on it. Where the law doesn&rsquo;t allow that to be excluded, my liability is limited to the
+        smallest amount the law permits.
+      </p>
+
+      <h2>9. Changes</h2>
+      <p>
+        I may edit these terms. The date at the top is the only changelog. Continuing to use the
+        site after a change means you accept the current version.
+      </p>
+
+      <h2>10. Questions</h2>
+      <p>
+        Email <a href={`mailto:${profile.email}`}>{profile.email}</a>. I read everything, and I
+        answer most of it.
+      </p>
+
+      <p class="stamp" style="margin-top:40px;">
+        See also the <a href="/privacy">privacy policy</a>.
+      </p>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .legal {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+  .legal h2 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-e4);
+    margin: 36px 0 10px;
+    letter-spacing: -0.01em;
+  }
+  .legal p {
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--text-c8);
+    margin: 0 0 12px;
+  }
+  .legal .stamp {
+    font-family: "Geist Mono", monospace;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .legal a:not(.page-link) {
+    color: var(--text-9);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+</style>
