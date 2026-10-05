@@ -15,7 +15,7 @@
 // export can never zero-out or break the site (mirrors portfolio rule #2).
 
 import { createReadStream } from "node:fs";
-import { readFile, writeFile, readdir } from "node:fs/promises";
+import { readFile, writeFile, readdir, stat } from "node:fs/promises";
 import { createInterface } from "node:readline";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -212,9 +212,28 @@ async function pickExportFile() {
   } catch {
     return null;
   }
-  // Prefer JSON (Health Auto Export), else fall back to xml.
-  const json = entries.filter((f) => f.toLowerCase().endsWith(".json"));
-  const xml = entries.filter((f) => f.toLowerCase().endsWith(".xml"));
+  // Prefer JSON (Health Auto Export), else fall back to xml. Within a format,
+  // take the NEWEST file by modification time — the directory keeps old
+  // exports around as history, and a plain readdir order would pin us to
+  // whichever name happens to sort first (i.e. the oldest month, forever).
+  const byNewest = async (files) => {
+    const stamped = await Promise.all(
+      files.map(async (f) => {
+        let mtime = 0;
+        try {
+          mtime = (await stat(path.join(EXPORT_DIR, f))).mtimeMs;
+        } catch {}
+        return { f, mtime };
+      }),
+    );
+    // Tie-break on name descending so date-stamped filenames stay predictable
+    // even when mtimes match (e.g. a fresh git checkout).
+    stamped.sort((a, b) => b.mtime - a.mtime || b.f.localeCompare(a.f));
+    return stamped.map((s) => s.f);
+  };
+
+  const json = await byNewest(entries.filter((f) => f.toLowerCase().endsWith(".json")));
+  const xml = await byNewest(entries.filter((f) => f.toLowerCase().endsWith(".xml")));
   const chosen = json[0] ?? xml[0];
   return chosen ? path.join(EXPORT_DIR, chosen) : null;
 }
