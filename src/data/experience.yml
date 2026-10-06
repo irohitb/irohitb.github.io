@@ -38,7 +38,7 @@ roles:
     bullets:
       - "Drove a 0→1 transformation (also as fractional PM) from AI suggestions to fully autonomous AI actions, delivering ~70% efficiency gains at scale across most clients."
       - "Built generative-UI capabilities; in the early phase they saw 2–3× more usage than standard chat-based agents."
-      - "Rewrote the data-extraction module to use multiple models on unstructured sources (primarily PDFs), doubling accuracy on hard-to-understand documents."
+      - "Built a multi-model PDF extraction engine for accounts payable, racing models against each other and reconciling their disagreements into one trusted result, doubling accuracy on the hardest invoices."
 
   - company: "Meter"
     note: "unicorn"
@@ -158,5 +158,6 @@ skills:
   - "Anthropic"
   - "OpenAI"
   - "OpenRouter"
+  - "Vercel AI Gateway"
   - "CI/CD"
   - "Vercel"

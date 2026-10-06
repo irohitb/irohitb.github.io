@@ -121,7 +121,7 @@ export function buildHtml({ experience, profile, recommendations }) {
   ul { margin: 3pt 0 0; padding-left: 12pt; }
   li { margin-bottom: 1.4pt; }
 
-  .block { margin-bottom: 9pt; }
+  .block { margin-bottom: 7pt; }
   .rec { margin-bottom: 6pt; break-inside: avoid; }
   .quote { font-style: italic; margin: 0 0 2pt; }
   .rec-name { font-weight: 700; margin: 0; font-size: 8.7pt; }
