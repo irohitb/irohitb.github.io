@@ -26,6 +26,19 @@ const esc = (s) =>
 // **bold** → <strong>, matching how /experience renders the same strings.
 const rich = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
 
+// Highlights carry the résumé's only coloured emphasis: the startup
+// proof-points in accent orange, the rest bold. Driven by pattern here rather
+// than by markup in experience.yml, which is also read as plain text by the
+// agent view and llms.txt.
+const ACCENT_PHRASES = [/\b\d+ unicorns?\b/gi, /\b\d+ acquired by [A-Z][a-z]+\b/g];
+const BOLD_PHRASES = [/\b\d+\+ locations\b/g, /\bGoogle Code\b/g];
+const highlight = (s) => {
+  let out = rich(s);
+  for (const re of ACCENT_PHRASES) out = out.replace(re, (m) => `<strong class="accent">${m}</strong>`);
+  for (const re of BOLD_PHRASES) out = out.replace(re, (m) => `<strong>${m}</strong>`);
+  return out;
+};
+
 export function buildHtml({ experience, profile, recommendations }) {
   const { summary, roles, highlights, education, skills } = experience;
   const p = profile.profile;
@@ -78,25 +91,25 @@ export function buildHtml({ experience, profile, recommendations }) {
     font-family: "Source Serif 4", Georgia, serif;
     font-size: 8.6pt;
     line-height: 1.28;
-    color: #111;
+    color: #1a1a1a;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
-  .accent { color: #c2410c; }
+  .accent { color: #d97a34; }
 
   header { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
   h1 { font-size: 22pt; font-weight: 700; margin: 0; letter-spacing: -0.01em; }
   .tagline { font-style: italic; font-size: 9.6pt; color: #333; margin: 2pt 0 0; }
-  .contacts { text-align: right; font-size: 8.4pt; line-height: 1.45; color: #222; }
+  .contacts { text-align: right; font-size: 8.4pt; line-height: 1.45; color: #1a1a1a; }
 
   .cols { display: flex; gap: 20px; margin-top: 13pt; align-items: stretch; }
   .left { flex: 1 1 66%; }
-  .right { flex: 0 0 30%; border-left: 0.6pt solid #bbb; padding-left: 16px; font-size: 8.2pt; }
+  .right { flex: 0 0 30%; border-left: 0.6pt solid #afafaf; padding-left: 16px; font-size: 8.2pt; }
 
   h2 {
     font-size: 9.2pt; font-weight: 600; text-transform: uppercase;
     letter-spacing: 0.09em; margin: 0 0 7pt; padding-bottom: 3pt;
-    border-bottom: 0.6pt solid #999;
+    border-bottom: 0.6pt solid #afafaf;
   }
   .right h2 { margin-top: 0; }
   .right section + h2, .left h2 + * + h2 { margin-top: 16pt; }
@@ -104,7 +117,7 @@ export function buildHtml({ experience, profile, recommendations }) {
   .role { margin-bottom: 5.5pt; break-inside: avoid; }
   .role-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
   .role h3 { font-size: 9.3pt; font-weight: 700; margin: 0; }
-  .period { font-size: 8.3pt; color: #333; white-space: nowrap; }
+  .period { font-size: 8.3pt; color: #1a1a1a; white-space: nowrap; }
   ul { margin: 3pt 0 0; padding-left: 12pt; }
   li { margin-bottom: 1.4pt; }
 
@@ -112,11 +125,11 @@ export function buildHtml({ experience, profile, recommendations }) {
   .rec { margin-bottom: 6pt; break-inside: avoid; }
   .quote { font-style: italic; margin: 0 0 2pt; }
   .rec-name { font-weight: 700; margin: 0; font-size: 8.7pt; }
-  .rec-title { color: #555; margin: 0; font-size: 7.8pt; line-height: 1.35; }
+  .rec-title { color: #7a7a7a; margin: 0; font-size: 7.8pt; line-height: 1.35; }
   .social p { margin: 0; }
   .agent-note {
-    border-top: 0.6pt dashed #aaa; margin-top: 10pt; padding-top: 7pt;
-    font-size: 7.9pt; font-style: italic; color: #333; line-height: 1.45;
+    border-top: 0.6pt dashed #afafaf; margin-top: 10pt; padding-top: 7pt;
+    font-size: 7.9pt; font-style: italic; color: #1a1a1a; line-height: 1.45;
   }
   .edu { margin: 0; }
 </style></head>
@@ -138,7 +151,7 @@ export function buildHtml({ experience, profile, recommendations }) {
     <div class="right">
       <div class="block">
         <h2>Highlights</h2>
-        <ul>${highlights.map((h) => `<li>${rich(h)}</li>`).join("")}</ul>
+        <ul>${highlights.map((h) => `<li>${highlight(h)}</li>`).join("")}</ul>
       </div>
 
       <div class="block">

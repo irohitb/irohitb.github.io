@@ -124,7 +124,7 @@ roles:
       - "Built plugins/SDKs to embed the product into other platforms."
 
 highlights:
-  - "Last 5 startups: 2 unicorns, 1 acquired by Cloudflare (early engineer)."
+  - "Last 5 startups I have worked at: 2 unicorns and 1 acquired by Cloudflare (early engineer)."
   - "Previously a startup founder — scaled to 50+ locations."
   - "Google Code Finalist."
 
@@ -157,5 +157,6 @@ skills:
   - "MCP servers & clients"
   - "Anthropic"
   - "OpenAI"
+  - "OpenRouter"
   - "CI/CD"
   - "Vercel"
