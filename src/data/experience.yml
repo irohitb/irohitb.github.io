@@ -9,13 +9,15 @@ roles:
   - company: "Rime"
     title: "Senior Engineer"
     what: "Voice AI"
-    period: "Jun 2025 — Present"
+    period: "2025 — Present"
     logo: "/assets/rime.jpeg"
     href: "https://rime.ai/"
     bullets:
       - "Engineering low-latency Voice AI systems (agent orchestration, multi-model pricing/usage tracking, OOV pipelines, WebSocket streaming), resulting in 10× revenue growth."
-      - "Developed AI agent playbooks that decompose open-ended tasks into deterministic workflows with validation and human-review steps — reducing ACU usage by 50% while improving first-pass code quality by 80%."
+      - "Developed AI agent playbooks that decompose open-ended tasks into deterministic workflows with validation and human-review steps, improving first-pass code quality by 80%."
+      - "Took the team to 99.9% uptime and 95% test coverage by making reliability everyone's job: small PRs, owned end to end, reviewed commit by commit. In realtime voice AI, uptime and latency are everything."
       - "Delivered a sub-200ms SLA across all non-TTS APIs and sub-100ms P99 latency on multiple high-traffic endpoints."
+      - "Worked with enterprise clients from technical scoping through production deployment, consistently winning executive buy-in and the revenue behind a **$24M Series A**."
     links:
       - title: "Rime raises its Series A"
         source: "rime.ai"
@@ -29,7 +31,7 @@ roles:
   - company: "Rtzen"
     title: "Engineering Lead"
     what: "Financial OS for businesses"
-    period: "Apr 2023 — Jun 2025"
+    period: "2023 — 2025"
     logo: "/assets/rtzen.svg"
     href: "https://www.rtzen.ai/"
     bullets:
@@ -41,7 +43,7 @@ roles:
     note: "unicorn"
     title: "Engineer (P/T)"
     what: "Internet as infrastructure"
-    period: "Mar 2023 — Oct 2024"
+    period: "2023 — 2024"
     logo: "/assets/meter.jpeg"
     href: "http://meter.com/"
     bullets:
@@ -58,7 +60,7 @@ roles:
     note: "acq. Cloudflare"
     title: "Founding Engineer"
     what: "SDKs for live experiences"
-    period: "Apr 2021 — Mar 2023"
+    period: "2021 — 2023"
     logo: "/assets/dyte.jpeg"
     href: "https://blog.cloudflare.com/introducing-cloudflare-realtime-and-realtimekit/"
     bullets:
@@ -83,7 +85,7 @@ roles:
     note: "unicorn"
     title: "VP of Product"
     what: "Quick commerce"
-    period: "Feb 2021 — Mar 2021"
+    period: "2021"
     logo: "/assets/zepto.jpeg"
     href: "https://www.zepto.com/"
     bullets:
@@ -98,7 +100,7 @@ roles:
   - company: "Supertokens"
     title: "Frontend Lead"
     what: "Open source auth"
-    period: "Jan 2020 — May 2020"
+    period: "2020"
     logo: "/assets/supertokens.png"
     href: "https://supertokens.com/"
     bullets:
@@ -114,7 +116,7 @@ roles:
   - company: "Liquiron"
     title: "Software Engineer"
     what: "Marketing SaaS"
-    period: "Sep 2018 — Jan 2020"
+    period: "2018 — 2020"
     bullets:
       - "Integrated Facebook, Twitter, Google & LinkedIn Marketing APIs into a unified dashboard to publish campaigns across channels."
       - "Built product SDKs for other frameworks and **a multi-tenant payment flow**."
