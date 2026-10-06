@@ -39,7 +39,11 @@ jobs:
           node-version: 22
           cache: npm
 
+      # Chromium is only needed by `npm run build:resume` (the resume
+      # workflow); skip the ~150MB download on every deploy.
       - run: npm ci
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: "1"
 
       # `npm run build` regenerates github.yml (token-free public API) + health
       # (keeps committed values if no export present), then runs astro build —

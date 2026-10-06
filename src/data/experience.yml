@@ -1,5 +1,6 @@
-# Full experience / CV — sourced from the résumé (public/resume.pdf).
-# Standalone page at /experience; NOT linked from the homepage.
+# Full experience / CV — the SOURCE OF TRUTH for the résumé.
+# /experience renders this, and scripts/build-resume.mjs renders public/resume.pdf
+# from it. Edit here, nowhere else.
 summary: >-
   Product-focused software engineer with 8+ years in high-paced startup
   environments, building and architecting applications with complex data

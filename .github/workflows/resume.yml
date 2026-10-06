@@ -1,11 +1,21 @@
 name: resume
 
-# Manually trigger to pull the latest résumé from the Google Doc (configured in
-# src/data/profile.yml → resume.sourceDocId), export it to PDF, and open a PR
-# with the updated public/resume.pdf. Review + merge to publish.
+# Re-render public/resume.pdf from the site's own data (src/data/*.yml) and
+# open a PR with the result. The résumé used to live in a Google Doc that this
+# workflow exported; that Doc is retired, so the YAML is the single source for
+# both /experience and the PDF.
+#
+# Runs on demand, and automatically when the data behind the résumé changes.
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "src/data/experience.yml"
+      - "src/data/recommendations.yml"
+      - "src/data/profile.yml"
+      - "scripts/build-resume.mjs"
 
 permissions:
   contents: write
@@ -15,28 +25,30 @@ jobs:
   update-resume:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
 
+      # Puppeteer downloads its own Chromium during install; the runner already
+      # has the shared libraries it needs.
       - run: npm ci
 
-      - name: Export résumé Google Doc → PDF
+      - name: Render résumé PDF
         run: npm run build:resume
 
       - name: Open a PR with the updated résumé
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7
         with:
           add-paths: public/resume.pdf
           branch: chore/update-resume
-          commit-message: "chore(resume): refresh public/resume.pdf from Google Doc"
+          commit-message: "chore(resume): re-render public/resume.pdf from site data"
           title: "Update résumé PDF"
           body: |
-            Automated résumé refresh from the source Google Doc
-            (`resume.sourceDocId` in `src/data/profile.yml`).
+            Re-rendered `public/resume.pdf` from `src/data/*.yml` via
+            `scripts/build-resume.mjs`.
 
-            Merge to publish the new `public/resume.pdf`.
+            Review the PDF, then merge to publish it at `/resume.pdf`.
           delete-branch: true

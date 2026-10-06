@@ -15,11 +15,10 @@ profile:
     npm: "https://npmjs.com/~irohitbhatia"
   resumeUrl: "/resume.pdf"
 
-# Résumé. The `resume` workflow exports the Google Doc below to `output` as PDF
-# and opens a PR. The Doc must be shared "anyone with the link can view".
-# The site links to profile.resumeUrl (the served path of that PDF).
+# Résumé. The Google Doc that used to back this is retired: src/data/*.yml is
+# the source now. `npm run build:resume` (or the `resume` workflow) renders
+# scripts/build-resume.mjs to the PDF below, and /experience is the web version.
 resume:
-  sourceDocId: "1xMrOqETZbOHOWtU-RsWkDJ2RRbCUZy4L1GN-862TjS0"
   output: "public/resume.pdf"
 
 # Hero typing animation — the hero types these lines out one after another,
