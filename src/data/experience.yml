@@ -38,7 +38,7 @@ roles:
     bullets:
       - "Drove a 0→1 transformation (also as fractional PM) from AI suggestions to fully autonomous AI actions, delivering ~70% efficiency gains at scale across most clients."
       - "Built generative-UI capabilities; in the early phase they saw 2–3× more usage than standard chat-based agents."
-      - "Built a multi-model PDF extraction engine for accounts payable, racing models against each other and reconciling their disagreements into one trusted result, doubling accuracy on the hardest invoices."
+      - "Built a tiered extraction pipeline for accounts payable that escalates only when it has to: native PDF parsing first, Azure and AWS document extraction when that fails, Claude and OpenAI last. Doubled accuracy on the hardest invoices."
 
   - company: "Meter"
     note: "unicorn"
